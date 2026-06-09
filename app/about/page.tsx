@@ -101,36 +101,49 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. CORPORATE PROFILE SECTION */}
+      {/* OUR STORY SECTION */}
       <section className="py-24 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
+            {/* Left — Text content */}
             <MotionDiv
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
             >
-              <h2 className="text-blue-600 font-black uppercase tracking-[0.3em] text-[10px] mb-6 block">
-                Corporate Profile
+              {/* Section label */}
+              <div className="flex items-center gap-2 mb-6">
+                <div className="w-6 h-0.5 bg-brand-red" />
+                <span className="text-brand-red text-xs font-semibold uppercase tracking-[0.25em]">
+                  Our Story
+                </span>
+              </div>
+
+              {/* Two-line heading */}
+              <h2 className="font-display text-3xl md:text-4xl font-black text-slate-900 leading-tight mb-2">
+                A Legacy of
               </h2>
-              <h3 className="text-4xl md:text-5xl font-black text-slate-900 mb-8 uppercase tracking-tighter italic leading-tight">
-                A Legacy of <br /> Master Polymers.
-              </h3>
-              <div className="space-y-6 text-lg text-slate-600 leading-relaxed font-medium">
+              <h2 className="font-display text-3xl md:text-4xl font-black text-brand-red leading-tight mb-8">
+                Master Polymers.
+              </h2>
+
+              {/* Body text */}
+              <div className="space-y-6 text-base text-slate-600 leading-relaxed">
                 <p>
                   Operating under the umbrella of{" "}
-                  <strong className="text-slate-900 uppercase">
+                  <strong className="text-slate-900">
                     Atlantic Polymers Pvt. Ltd.
                   </strong>
                   , our brand{" "}
-                  <strong className="text-blue-600 italic">Fixoboard</strong>{" "}
-                  has become synonymous with industrial reliability. With over
-                  30 years of history, we are one of India's largest producers
-                  and indenting houses for PVC products.
+                  <strong className="text-brand-blue">Fixoboard</strong> has
+                  become synonymous with industrial reliability. With over 30
+                  years of history, we are one of India's largest producers and
+                  indenting houses for PVC products.
                 </p>
                 <p>
                   Our inclusion in the{" "}
-                  <strong className="text-slate-900 border-b-2 border-blue-500">
+                  <strong className="text-slate-900 border-b-2 border-brand-red">
                     Limca Book of Indian Records
                   </strong>{" "}
                   stands as an official testament to our achievements in product
@@ -140,28 +153,37 @@ const AboutPage: React.FC = () => {
                 </p>
               </div>
 
+              {/* Stats — left border pattern from design system */}
               <div className="grid grid-cols-2 gap-8 mt-12">
-                <div>
-                  <span className="block text-4xl font-black text-blue-600 mb-1 tracking-tighter italic">
+                <div className="border-l-2 border-brand-red pl-4">
+                  <span className="block text-3xl font-black font-display text-slate-900">
                     30+
                   </span>
-                  <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                  <span className="text-[11px] text-slate-400 uppercase tracking-widest">
                     Years Industry Legacy
                   </span>
                 </div>
-                <div>
-                  <span className="block text-4xl font-black text-blue-600 mb-1 tracking-tighter italic">
+                <div className="border-l-2 border-brand-blue pl-4">
+                  <span className="block text-3xl font-black font-display text-slate-900">
                     Limca
                   </span>
-                  <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                  <span className="text-[11px] text-slate-400 uppercase tracking-widest">
                     Record for Achievement
                   </span>
                 </div>
               </div>
             </MotionDiv>
 
-            <div className="relative">
+            {/* Right — Image grid */}
+            <MotionDiv
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative"
+            >
               <div className="grid grid-cols-2 gap-4">
+                {/* Left column */}
                 <div className="space-y-4">
                   <div className="h-64 rounded-3xl overflow-hidden shadow-xl border-4 border-white">
                     <img
@@ -170,38 +192,40 @@ const AboutPage: React.FC = () => {
                       alt="Legacy"
                     />
                   </div>
-                  <div className="bg-slate-900 p-8 rounded-3xl text-white">
-                    <HistoryIcon className="text-blue-500 mb-4" size={32} />
-                    <h4 className="font-black uppercase text-sm tracking-tight mb-2">
+                  <div className="bg-brand-dark p-8 rounded-3xl text-white">
+                    <HistoryIcon className="text-brand-red mb-4" size={32} />
+                    <h4 className="font-display font-black text-sm mb-2">
                       Since 1994
                     </h4>
-                    <p className="text-[10px] text-slate-400 uppercase font-bold leading-relaxed">
+                    <p className="text-[11px] text-slate-400 uppercase tracking-wide leading-relaxed">
                       Continuous evolution from polymer indenting to advanced
                       board manufacturing.
                     </p>
                   </div>
                 </div>
+
+                {/* Right column — pushed down for stagger effect */}
                 <div className="space-y-4 pt-12">
-                  <div className="bg-blue-600 p-8 rounded-3xl text-white shadow-xl shadow-blue-200">
+                  <div className="bg-brand-blue p-8 rounded-3xl text-white shadow-xl shadow-brand-blue/20">
                     <Globe className="mb-4" size={32} />
-                    <h4 className="font-black uppercase text-sm tracking-tight mb-2">
+                    <h4 className="font-display font-black text-sm mb-2">
                       Dubai Branch
                     </h4>
-                    <p className="text-[10px] text-blue-100 uppercase font-bold leading-relaxed">
+                    <p className="text-[11px] text-blue-100 uppercase tracking-wide leading-relaxed">
                       International sourcing and distribution hub connecting
                       global markets.
                     </p>
                   </div>
                   <div className="h-64 rounded-3xl overflow-hidden shadow-xl border-4 border-white">
                     <img
-                      src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=400"
-                      className="w-full h-full object-cover"
+                      src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=400"
                       alt="Dubai"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                 </div>
               </div>
-            </div>
+            </MotionDiv>
           </div>
         </div>
       </section>
