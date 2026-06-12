@@ -19,6 +19,7 @@ import {
   MapPin,
   Phone,
   Mail,
+  ArrowRight,
 } from "lucide-react";
 
 const MotionDiv = motion.div as any;
@@ -635,49 +636,65 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. A STEP TOWARDS GREEN REVOLUTION */}
+      {/* GREEN REVOLUTION SECTION */}
       <section className="py-24 bg-green-50/30 overflow-hidden relative">
-        <div className="absolute -right-20 top-20 text-green-600/5 font-black text-[20vw] leading-none pointer-events-none uppercase">
+        {/* Decorative background text */}
+        <div className="absolute -right-20 top-20 text-green-600/5 font-black text-[20vw] leading-none pointer-events-none uppercase select-none">
           Green
         </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
+            {/* Left — text content */}
             <MotionDiv
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
             >
-              <h2 className="text-green-600 font-black uppercase tracking-[0.3em] text-[10px] mb-6 block">
-                Green Revolution
+              {/* Section label */}
+              <div className="flex items-center gap-2 mb-6">
+                <div className="w-6 h-0.5 bg-green-600" />
+                <span className="text-green-600 text-xs font-semibold uppercase tracking-[0.25em]">
+                  Green Revolution
+                </span>
+              </div>
+
+              {/* Two-line heading */}
+              <h2 className="font-display text-3xl md:text-4xl font-black text-slate-900 leading-tight mb-2">
+                Preservation
               </h2>
-              <h3 className="text-4xl md:text-5xl font-black text-slate-900 mb-8 uppercase tracking-tighter italic leading-tight">
-                Preservation <br /> Through Engineering.
-              </h3>
+              <h2 className="font-display text-3xl md:text-4xl font-black text-green-600 leading-tight mb-10">
+                Through Engineering.
+              </h2>
+
+              {/* Two point blocks */}
               <div className="space-y-8">
                 <div className="flex gap-6">
-                  <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-green-600 shrink-0">
-                    <span className="text-2xl font-black italic">14%</span>
+                  <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-green-600 shrink-0 border border-green-100">
+                    <span className="font-display text-lg font-black">14%</span>
                   </div>
                   <div>
-                    <h4 className="text-lg font-black text-slate-900 uppercase mb-2">
+                    <h4 className="font-display font-black text-slate-900 text-base mb-2">
                       The Deforestation Crisis
                     </h4>
-                    <p className="text-slate-600 font-medium text-sm leading-relaxed">
+                    <p className="text-slate-600 text-sm leading-relaxed">
                       Illegal logging contributes to 14% of global ecological
                       damage. Traditional plywood depends on harvesting these
                       vital resources.
                     </p>
                   </div>
                 </div>
+
                 <div className="flex gap-6">
-                  <div className="w-16 h-16 bg-green-600 rounded-2xl shadow-lg flex items-center justify-center text-white shrink-0">
-                    <Leaf size={32} />
+                  <div className="w-16 h-16 bg-green-600 rounded-2xl shadow-lg shadow-green-200 flex items-center justify-center text-white shrink-0">
+                    <Leaf size={28} />
                   </div>
                   <div>
-                    <h4 className="text-lg font-black text-slate-900 uppercase mb-2">
+                    <h4 className="font-display font-black text-slate-900 text-base mb-2">
                       The Fixoboard Alternative
                     </h4>
-                    <p className="text-slate-600 font-medium text-sm leading-relaxed">
+                    <p className="text-slate-600 text-sm leading-relaxed">
                       Every board produced is 100% recyclable, zero-emission,
                       and does not harm a single tree. It is the definitive
                       sustainable choice.
@@ -685,40 +702,52 @@ const AboutPage: React.FC = () => {
                   </div>
                 </div>
               </div>
+
+              {/* CTA */}
               <div className="mt-12">
-                <h4 className="text-3xl font-black text-green-700 uppercase tracking-tighter mb-8 italic">
-                  GO GREEN WITH{" "}
-                  <span className="underline decoration-green-300">
-                    FIXOBOARD
+                <p className="font-display font-black text-2xl text-slate-900 mb-6">
+                  Go Green with{" "}
+                  <span className="text-green-600 underline decoration-green-300 underline-offset-4">
+                    Fixoboard.
                   </span>
-                </h4>
+                </p>
                 <Link
                   to="/contact"
-                  className="bg-slate-900 text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-green-600 transition-all shadow-xl shadow-slate-200"
+                  className="inline-flex items-center gap-2 bg-brand-dark hover:bg-green-600 text-white px-6 py-3 rounded-xl text-sm font-bold uppercase tracking-wider transition-all duration-200 shadow-lg"
                 >
-                  Join the movement
+                  Join the Movement <ArrowRight size={15} />
                 </Link>
               </div>
             </MotionDiv>
-            <div className="relative">
-              <div className="rounded-[4rem] overflow-hidden shadow-2xl border-8 border-white">
+
+            {/* Right — image with floating card */}
+            <MotionDiv
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative"
+            >
+              <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
                 <img
                   src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=800"
-                  className="w-full h-full object-cover"
-                  alt="Environment"
+                  className="w-full h-[500px] object-cover"
+                  alt="Forest environment"
                 />
               </div>
-              <div className="absolute -bottom-10 -left-10 bg-white p-10 rounded-[3rem] shadow-2xl border border-green-100 max-w-xs">
-                <div className="flex items-center gap-3 text-green-600 font-black uppercase tracking-widest text-[10px] mb-4">
-                  <CheckCircle2 size={16} />
+
+              {/* Floating card — depth effect */}
+              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl border border-green-100 p-6 hidden md:block max-w-xs">
+                <div className="flex items-center gap-2 text-green-600 font-semibold text-xs uppercase tracking-widest mb-3">
+                  <CheckCircle2 size={14} />
                   100% Sustainable
                 </div>
-                <p className="text-slate-500 text-xs font-bold leading-relaxed uppercase">
+                <p className="text-slate-500 text-xs leading-relaxed">
                   Zero emission production facility powered by ethical energy
                   standards at Silvassa.
                 </p>
               </div>
-            </div>
+            </MotionDiv>
           </div>
         </div>
       </section>
