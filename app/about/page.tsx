@@ -858,62 +858,97 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 9. CONTACT INFORMATION BLOCK */}
-      <section className="py-24 bg-slate-50 border-t border-slate-200">
+      {/* CONTACT INFO SECTION */}
+      <section className="py-24 bg-slate-50 border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-3 gap-12">
-            <div className="flex gap-6">
-              <div className="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center text-blue-600 shrink-0">
-                <MapPin size={24} />
-              </div>
-              <div>
-                <h4 className="text-sm font-black uppercase tracking-widest text-slate-900 mb-2">
-                  Address
-                </h4>
-                <p className="text-slate-500 text-xs font-bold leading-relaxed uppercase">
-                  Sejal Encasa, Office No. 4A, 4th Floor, S.V. Road, Kandivali
-                  (West), Mumbai – 400067, MH, India.
-                </p>
-              </div>
+          {/* Section label */}
+          <MotionDiv
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-12"
+          >
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-6 h-0.5 bg-brand-blue" />
+              <span className="text-brand-blue text-xs font-semibold uppercase tracking-[0.25em]">
+                Get In Touch
+              </span>
             </div>
-            <div className="flex gap-6">
-              <div className="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center text-blue-600 shrink-0">
-                <Phone size={24} />
-              </div>
-              <div>
-                <h4 className="text-sm font-black uppercase tracking-widest text-slate-900 mb-2">
-                  Phone
-                </h4>
-                <a
-                  href="tel:+919930349472"
-                  className="block text-slate-500 text-xs font-bold uppercase hover:text-blue-600 transition-colors mb-1"
-                >
-                  +91 99303 49472
-                </a>
-                <a
-                  href="tel:+919930349421"
-                  className="block text-slate-500 text-xs font-bold uppercase hover:text-blue-600 transition-colors"
-                >
-                  +91 99303 49421
-                </a>
-              </div>
-            </div>
-            <div className="flex gap-6">
-              <div className="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center text-blue-600 shrink-0">
-                <Mail size={24} />
-              </div>
-              <div>
-                <h4 className="text-sm font-black uppercase tracking-widest text-slate-900 mb-2">
-                  Email
-                </h4>
-                <a
-                  href="mailto:info@fixoboard.com"
-                  className="block text-slate-500 text-xs font-bold uppercase hover:text-blue-600 transition-colors"
-                >
-                  info@fixoboard.com
-                </a>
-              </div>
-            </div>
+            <h2 className="font-display text-2xl font-black text-slate-900">
+              Find Us Here.
+            </h2>
+          </MotionDiv>
+
+          {/* Contact items */}
+          <div className="grid lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <MapPin size={22} />,
+                label: "Address",
+                content: (
+                  <p className="text-slate-500 text-sm leading-relaxed">
+                    Sejal Encasa, Office No. 4A, 4th Floor,
+                    <br />
+                    S.V. Road, Kandivali (West),
+                    <br />
+                    Mumbai – 400067, MH, India.
+                  </p>
+                ),
+              },
+              {
+                icon: <Phone size={22} />,
+                label: "Phone",
+                content: (
+                  <div className="space-y-1">
+                    <a
+                      href="tel:+919930349472"
+                      className="block text-slate-500 text-sm hover:text-brand-blue transition-colors"
+                    >
+                      +91 99303 49472
+                    </a>
+
+                    <a
+                      href="tel:+919930349421"
+                      className="block text-slate-500 text-sm hover:text-brand-blue transition-colors"
+                    >
+                      +91 99303 49421
+                    </a>
+                  </div>
+                ),
+              },
+              {
+                icon: <Mail size={22} />,
+                label: "Email",
+                content: (
+                  <a
+                    href="mailto:info@fixoboard.com"
+                    className="text-slate-500 text-sm hover:text-brand-blue transition-colors"
+                  >
+                    info@fixoboard.com
+                  </a>
+                ),
+              },
+            ].map((item, idx) => (
+              <MotionDiv
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.1 }}
+                className="flex gap-5"
+              >
+                <div className="w-12 h-12 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center text-brand-blue shrink-0">
+                  {item.icon}
+                </div>
+                <div>
+                  <h4 className="font-display font-black text-slate-900 text-sm mb-2">
+                    {item.label}
+                  </h4>
+                  {item.content}
+                </div>
+              </MotionDiv>
+            ))}
           </div>
         </div>
       </section>
