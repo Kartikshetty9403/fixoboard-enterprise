@@ -34,7 +34,7 @@ const Panels3DApplicationPage: React.FC = () => {
             stays readable — same trick used in the About hero */}
         <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/80 to-transparent" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 pb-32">
           <MotionDiv
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -65,14 +65,14 @@ const Panels3DApplicationPage: React.FC = () => {
             </div>
 
             {/* Two-line heading — white first line, red second line */}
-            <h1 className="font-display text-4xl md:text-5xl font-black text-white leading-tight mb-2">
+            <h1 className="font-display text-5xl md:text-6xl font-black text-white leading-tight mb-2">
               3D Wall Panels
             </h1>
-            <h1 className="font-display text-4xl md:text-5xl font-black text-brand-red leading-tight mb-6">
+            <h1 className="font-display text-5xl md:text-6xl font-black text-brand-red leading-tight mb-6">
               For Modern Interiors.
             </h1>
 
-            <p className="text-slate-300 text-lg max-w-xl leading-relaxed mb-10">
+            <p className="text-slate-300 text-lg max-w-2xl leading-relaxed mb-10">
               Textured, moisture-resistant surfaces that add depth and luxury to
               modern interior wall treatments.
             </p>
