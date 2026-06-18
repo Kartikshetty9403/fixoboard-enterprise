@@ -34,14 +34,14 @@ const Panels3DApplicationPage: React.FC = () => {
             stays readable — same trick used in the About hero */}
         <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/80 to-transparent" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 pb-32">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 pb-32 text-center">
           <MotionDiv
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
             {/* Breadcrumb — v3 doc pattern for dark hero pages */}
-            <div className="flex items-center gap-2 text-slate-400 text-xs mb-6">
+            <div className="flex items-center justify-center gap-2 text-slate-400 text-xs mb-6">
               <Link to="/" className="hover:text-white transition-colors">
                 Home
               </Link>
@@ -57,7 +57,7 @@ const Panels3DApplicationPage: React.FC = () => {
             </div>
 
             {/* Section label — the short colored line + small caps text */}
-            <div className="flex items-center gap-2 mb-6">
+            <div className="flex items-center justify-center gap-2 mb-6">
               <div className="w-6 h-0.5 bg-brand-red" />
               <span className="text-brand-red text-xs font-semibold uppercase tracking-[0.25em]">
                 Decorative Wall Elevation
@@ -72,13 +72,13 @@ const Panels3DApplicationPage: React.FC = () => {
               For Modern Interiors.
             </h1>
 
-            <p className="text-slate-300 text-lg max-w-2xl leading-relaxed mb-10">
+            <p className="text-slate-300 text-lg max-w-2xl leading-relaxed mb-10 mx-auto">
               Textured, moisture-resistant surfaces that add depth and luxury to
               modern interior wall treatments.
             </p>
 
             {/* Stat pills — quick trust signals in the hero */}
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 justify-center">
               {[
                 "Moisture Resistant",
                 "Lead-Free",
