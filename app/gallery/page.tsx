@@ -116,7 +116,7 @@ const GalleryPage: React.FC = () => {
       </section>
 
       {/* FILTER CHIPS */}
-      <section className="top-20 z-40 bg-white/80 backdrop-blur-md border-b border-slate-100 py-6">
+      <section className="sticky top-28 z-40 bg-white/80 backdrop-blur-md border-b border-slate-100 py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap gap-3">
             {categories.map((cat) => (
