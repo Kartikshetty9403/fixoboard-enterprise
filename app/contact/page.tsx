@@ -1,20 +1,22 @@
-
-import React, { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { 
-  Send, 
-  Phone, 
-  Mail, 
-  MapPin, 
-  MessageSquare, 
-  Briefcase, 
-  Upload, 
-  Users, 
+import React, { useState, useRef } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import {
+  Send,
+  Phone,
+  Mail,
+  MapPin,
+  MessageSquare,
+  Briefcase,
+  Upload,
+  Users,
   Navigation,
   CheckCircle2,
   FileText,
-  X
-} from 'lucide-react';
+  X,
+  ChevronRight,
+  ArrowRight,
+} from "lucide-react";
 
 const MotionDiv = motion.div as any;
 const MotionSection = motion.section as any;
@@ -45,307 +47,679 @@ const ContactPage: React.FC = () => {
 
   const contactInfo = [
     {
-      icon: <Phone className="text-blue-600" size={24} />,
+      icon: <Phone className="text-brand-blue" size={22} />,
       title: "Call Us",
       details: ["+91 9930349472", "+91 9930349421"],
-      link: "tel:+919930349472"
+      link: "tel:+919930349472",
     },
     {
-      icon: <Mail className="text-blue-600" size={24} />,
+      icon: <Mail className="text-brand-blue" size={22} />,
       title: "Email Us",
       details: ["info@fixoboard.com"],
-      link: "mailto:info@fixoboard.com"
+      link: "mailto:info@fixoboard.com",
     },
     {
-      icon: <MapPin className="text-blue-600" size={24} />,
+      icon: <MapPin className="text-brand-blue" size={22} />,
       title: "Visit Us",
-      details: ["Sejal Encasa, Office No. 4A, 4th Floor, S.V. Road, Kandivali (W), Mumbai - 400067"],
-      link: "https://maps.google.com/?q=Sejal+Encasa+Kandivali+West+Mumbai"
-    }
+      details: [
+        "Sejal Encasa, Office No. 4A, 4th Floor, S.V. Road, Kandivali (W), Mumbai - 400067",
+      ],
+      link: "https://maps.google.com/?q=Sejal+Encasa+Kandivali+West+Mumbai",
+    },
   ];
 
   return (
     <div className="min-h-screen bg-white">
-      {/* 1. Contact Hero */}
-      <section className="relative py-32 bg-slate-900 overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <img 
-            src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=2070" 
-            alt="Contact Hero" 
-            className="w-full h-full object-cover"
+      {/* ── SECTION 1: HERO ── */}
+      <section className="relative pt-40 pb-32 bg-brand-dark overflow-hidden">
+        {/* Background image — dim overlay */}
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=2070"
+            alt=""
+            className="w-full h-full object-cover opacity-10"
+            loading="lazy"
           />
+          <div className="absolute inset-0 bg-brand-dark/70" />
         </div>
+
+        {/* Content */}
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <MotionDiv 
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
+          {/* Breadcrumb */}
+          <MotionDiv
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-blue-500 font-black uppercase tracking-[0.3em] text-xs mb-6 block">Get In Touch</span>
-            <h1 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter uppercase italic leading-none">
-              Let’s Build Something <br /> <span className="text-blue-500">Sustainable Together.</span>
+            <div className="flex items-center justify-center gap-2 text-slate-400 text-xs mb-6">
+              <Link to="/" className="hover:text-white transition-colors">
+                Home
+              </Link>
+              <ChevronRight size={12} />
+              <span className="text-white">Contact</span>
+            </div>
+
+            {/* Section label */}
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <div className="w-6 h-0.5 bg-brand-red" />
+              <span className="text-brand-red text-xs font-semibold uppercase tracking-[0.25em]">
+                Get In Touch
+              </span>
+              <div className="w-6 h-0.5 bg-brand-red" />
+            </div>
+
+            {/* Two-line heading */}
+            <h1 className="font-display text-4xl md:text-5xl font-black text-white leading-tight mb-2">
+              Let's Build Something
             </h1>
+            <h1 className="font-display text-4xl md:text-5xl font-black text-brand-red leading-tight mb-6">
+              Sustainable Together.
+            </h1>
+
+            <p className="text-slate-400 text-base leading-relaxed max-w-2xl mx-auto">
+              Whether you're an architect, contractor, or distributor — we're
+              here to help. Reach out and our team will get back to you within
+              24 hours.
+            </p>
           </MotionDiv>
         </div>
       </section>
 
-      {/* 2. Contact Information Grid */}
-      <section className="py-12 -mt-16 relative z-10 px-4">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-6">
-          {contactInfo.map((info, idx) => (
-            <MotionDiv
-              key={idx}
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: idx * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="bg-white p-8 rounded-[2rem] shadow-xl border border-slate-100 flex flex-col items-center text-center group"
-            >
-              <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                {info.icon}
-              </div>
-              <h3 className="text-lg font-black text-slate-900 mb-4 uppercase tracking-widest">{info.title}</h3>
-              {info.details.map((detail, dIdx) => (
-                <a 
-                  key={dIdx} 
-                  href={info.link} 
-                  className="text-slate-500 font-medium hover:text-blue-600 transition-colors block mb-1"
+      {/* ── SECTION 2: CONTACT INFO CARDS ── */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section label */}
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <div className="w-6 h-0.5 bg-brand-blue" />
+            <span className="text-brand-blue text-xs font-semibold uppercase tracking-[0.25em]">
+              Reach Out
+            </span>
+            <div className="w-6 h-0.5 bg-brand-blue" />
+          </div>
+
+          <h2 className="font-display text-3xl md:text-4xl font-black text-slate-900 leading-tight text-center mb-2">
+            We're Always
+          </h2>
+          <h2 className="font-display text-3xl md:text-4xl font-black text-brand-red leading-tight text-center mb-16">
+            Here For You.
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {contactInfo.map((info, idx) => (
+              <MotionDiv
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm
+                     flex flex-col items-center text-center group
+                     hover:shadow-lg transition-all duration-300"
+              >
+                {/* Icon badge */}
+                <div
+                  className="w-14 h-14 bg-brand-blue/10 rounded-xl flex items-center justify-center mb-6
+                          group-hover:bg-brand-blue group-hover:[&>*]:text-white transition-all duration-300"
                 >
-                  {detail}
-                </a>
-              ))}
-            </MotionDiv>
-          ))}
+                  {info.icon}
+                </div>
+
+                <h3 className="font-display text-lg font-black text-slate-900 mb-4">
+                  {info.title}
+                </h3>
+
+                <div className="space-y-1">
+                  {info.details.map((detail, dIdx) => (
+                    <a
+                      key={dIdx}
+                      href={info.link}
+                      className="text-slate-500 text-sm leading-relaxed hover:text-brand-blue transition-colors block"
+                    >
+                      {detail}
+                    </a>
+                  ))}
+                </div>
+              </MotionDiv>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* 3. Inquiry Form & 5. Distributorship Section */}
-      <section className="py-24">
+      {/* ── SECTION 3: INQUIRY FORM + DISTRIBUTORSHIP SIDEBAR ── */}
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-3 gap-16">
-            {/* Inquiry Form */}
-            <div className="lg:col-span-2">
-              <div className="bg-white rounded-[3rem] p-8 md:p-12 border border-slate-100 shadow-sm">
+          {/* Section label */}
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-6 h-0.5 bg-brand-red" />
+            <span className="text-brand-red text-xs font-semibold uppercase tracking-[0.25em]">
+              Inquiries
+            </span>
+          </div>
+
+          <h2 className="font-display text-3xl md:text-4xl font-black text-slate-900 leading-tight mb-2">
+            Request a Quote
+          </h2>
+          <h2 className="font-display text-3xl md:text-4xl font-black text-brand-red leading-tight mb-16">
+            or Ask Us Anything.
+          </h2>
+
+          <div className="grid lg:grid-cols-3 gap-12">
+            {/* ── LEFT: Inquiry Form (spans 2 cols) ── */}
+            <MotionDiv
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-2"
+            >
+              <div className="bg-slate-50 rounded-2xl p-8 md:p-12 border border-slate-100">
+                {/* Icon + title row */}
                 <div className="flex items-center gap-4 mb-10">
-                  <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-200">
-                    <MessageSquare size={24} />
+                  <div className="w-12 h-12 bg-brand-blue rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-blue/20">
+                    <MessageSquare size={22} />
                   </div>
-                  <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter italic">Inquiry / Quote Request</h2>
+                  <h3 className="font-display text-2xl font-black text-slate-900">
+                    Inquiry / Quote Request
+                  </h3>
                 </div>
 
+                {/* Success state */}
                 {inquirySubmitted ? (
-                  <MotionDiv initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="bg-green-50 p-10 rounded-3xl border border-green-100 text-center">
-                    <CheckCircle2 className="text-green-500 mx-auto mb-4" size={48} />
-                    <h3 className="text-xl font-black text-green-900 uppercase mb-2">Thank You!</h3>
-                    <p className="text-green-700 font-medium">Your inquiry has been received. Our technical team will contact you shortly.</p>
+                  <MotionDiv
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4 }}
+                    className="bg-white rounded-2xl border border-slate-100 p-12 text-center"
+                  >
+                    <div className="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                      <CheckCircle2 className="text-green-500" size={32} />
+                    </div>
+                    <h4 className="font-display text-xl font-black text-slate-900 mb-2">
+                      Thank You!
+                    </h4>
+                    <p className="text-slate-500 text-sm leading-relaxed">
+                      Your inquiry has been received. Our technical team will
+                      contact you within 24 hours.
+                    </p>
                   </MotionDiv>
                 ) : (
-                  <form onSubmit={handleInquirySubmit} className="grid md:grid-cols-2 gap-8">
+                  <form
+                    onSubmit={handleInquirySubmit}
+                    className="grid md:grid-cols-2 gap-6"
+                  >
+                    {/* Name */}
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Your Name *</label>
-                      <input required type="text" className="w-full bg-slate-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-blue-600 transition-all font-medium" placeholder="Full Name" />
+                      <label className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
+                        Your Name *
+                      </label>
+                      <input
+                        required
+                        type="text"
+                        placeholder="Full Name"
+                        className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm
+                             focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
+                             transition-all"
+                      />
                     </div>
+
+                    {/* Email */}
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Email Address *</label>
-                      <input required type="email" className="w-full bg-slate-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-blue-600 transition-all font-medium" placeholder="email@company.com" />
+                      <label className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
+                        Email Address *
+                      </label>
+                      <input
+                        required
+                        type="email"
+                        placeholder="email@company.com"
+                        className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm
+                             focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
+                             transition-all"
+                      />
                     </div>
+
+                    {/* Phone */}
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Phone Number *</label>
-                      <input required type="tel" className="w-full bg-slate-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-blue-600 transition-all font-medium" placeholder="+91 XXXX XXXX" />
+                      <label className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
+                        Phone Number *
+                      </label>
+                      <input
+                        required
+                        type="tel"
+                        placeholder="+91 XXXXX XXXXX"
+                        className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm
+                             focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
+                             transition-all"
+                      />
                     </div>
+
+                    {/* Company */}
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Company (Optional)</label>
-                      <input type="text" className="w-full bg-slate-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-blue-600 transition-all font-medium" placeholder="Business Name" />
+                      <label className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
+                        Company (Optional)
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Business Name"
+                        className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm
+                             focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
+                             transition-all"
+                      />
                     </div>
+
+                    {/* Message */}
                     <div className="md:col-span-2 space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Detailed Message *</label>
-                      <textarea required rows={5} className="w-full bg-slate-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-blue-600 transition-all font-medium" placeholder="Describe your project requirements..."></textarea>
+                      <label className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
+                        Message *
+                      </label>
+                      <textarea
+                        required
+                        rows={5}
+                        placeholder="Describe your project requirements, quantities needed, or any questions..."
+                        className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm
+                             focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
+                             transition-all resize-none"
+                      />
                     </div>
+
+                    {/* Submit */}
                     <div className="md:col-span-2">
-                      <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-5 rounded-2xl flex items-center justify-center gap-3 transition-all shadow-xl shadow-blue-200 uppercase tracking-[0.2em] text-xs">
-                        Submit Inquiry
-                        <Send size={18} />
+                      <button
+                        type="submit"
+                        className="inline-flex items-center gap-2 bg-brand-red hover:bg-brand-red-dark text-white
+                             px-8 py-3 rounded-xl text-sm font-bold uppercase tracking-wider
+                             transition-all hover:scale-[1.02] shadow-lg shadow-brand-red/20"
+                      >
+                        Submit Inquiry <Send size={15} />
                       </button>
                     </div>
                   </form>
                 )}
               </div>
-            </div>
+            </MotionDiv>
 
-            {/* Distributorship Sidebar */}
-            <div className="space-y-8">
-              <div className="bg-slate-900 rounded-[3rem] p-10 text-white relative overflow-hidden shadow-2xl">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600/20 blur-3xl rounded-full" />
-                <div className="relative z-10">
-                  <Users className="text-blue-500 mb-6" size={40} />
-                  <h3 className="text-2xl font-black mb-6 uppercase tracking-tight italic">Partner With Us</h3>
-                  <p className="text-slate-400 font-medium mb-10 leading-relaxed">
-                    Join India's most innovative PVC/WPC network. We are expanding our footprint across 
-                    20+ states and seeking committed partners to grow with the "Green Revolution".
+            {/* ── RIGHT: Distributorship Sidebar ── */}
+            <MotionDiv
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="space-y-6"
+            >
+              {/* Partner card */}
+              <div className="bg-brand-dark rounded-2xl p-8 text-white relative overflow-hidden">
+                {/* decorative glow */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-blue/20 blur-3xl rounded-full pointer-events-none" />
+
+                <div className="relative">
+                  <div className="w-12 h-12 bg-brand-blue/20 rounded-xl flex items-center justify-center mb-6">
+                    <Users className="text-brand-blue" size={22} />
+                  </div>
+
+                  <h3 className="font-display text-xl font-black text-white mb-2">
+                    Partner With Us
+                  </h3>
+                  <p className="font-display text-xl font-black text-brand-red mb-6">
+                    Become a Distributor.
                   </p>
-                  <ul className="space-y-4 mb-10">
-                    <li className="flex items-center gap-3 text-xs font-black uppercase tracking-widest text-slate-300">
-                      <CheckCircle2 size={16} className="text-blue-500" />
-                      Industrial Support
-                    </li>
-                    <li className="flex items-center gap-3 text-xs font-black uppercase tracking-widest text-slate-300">
-                      <CheckCircle2 size={16} className="text-blue-500" />
-                      Marketing Collaterals
-                    </li>
-                    <li className="flex items-center gap-3 text-xs font-black uppercase tracking-widest text-slate-300">
-                      <CheckCircle2 size={16} className="text-blue-500" />
-                      Logistics Assistance
-                    </li>
+
+                  <p className="text-slate-400 text-sm leading-relaxed mb-8">
+                    Join India's most innovative PVC/WPC network. We're
+                    expanding across 20+ states and seeking committed partners
+                    to grow with the Green Revolution.
+                  </p>
+
+                  <ul className="space-y-3 mb-8">
+                    {[
+                      "Industrial Support",
+                      "Marketing Collaterals",
+                      "Logistics Assistance",
+                    ].map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-center gap-3 text-sm text-slate-300"
+                      >
+                        <CheckCircle2
+                          size={15}
+                          className="text-brand-blue shrink-0"
+                        />
+                        {item}
+                      </li>
+                    ))}
                   </ul>
-                  <button className="w-full bg-white text-slate-900 py-4 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-blue-50 transition-all">
-                    Apply for Distributorship
-                  </button>
+
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-blue-dark text-white
+                         px-6 py-3 rounded-xl text-sm font-bold uppercase tracking-wider
+                         transition-all w-full justify-center"
+                  >
+                    Apply for Distributorship <ArrowRight size={15} />
+                  </Link>
                 </div>
               </div>
 
-              <div className="bg-blue-50 rounded-[3rem] p-10 border border-blue-100 flex flex-col items-center text-center">
-                <h4 className="text-blue-900 font-black uppercase tracking-tighter text-xl mb-4">Direct Connect</h4>
-                <p className="text-blue-700 text-sm font-bold uppercase mb-6 tracking-wide">Instant Technical Support</p>
-                <a 
-                  href="https://wa.me/919930349472" 
-                  className="bg-green-600 text-white px-8 py-3 rounded-xl font-black uppercase tracking-widest text-[10px] flex items-center gap-2 hover:bg-green-700 transition-all shadow-lg shadow-green-200"
+              {/* WhatsApp card */}
+              <div className="bg-slate-50 rounded-2xl p-8 border border-slate-100">
+                <h4 className="font-display text-lg font-black text-slate-900 mb-1">
+                  Direct Connect
+                </h4>
+                <p className="text-slate-500 text-sm mb-6">
+                  Need instant technical support? Chat with our team directly.
+                </p>
+
+                <a
+                  href="https://wa.me/919930349472"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white
+                       px-6 py-3 rounded-xl text-sm font-bold uppercase tracking-wider
+                       transition-all w-full justify-center shadow-lg shadow-green-600/20"
                 >
-                  Chat on WhatsApp
+                  Chat on WhatsApp <ArrowRight size={15} />
                 </a>
               </div>
-            </div>
+            </MotionDiv>
           </div>
         </div>
       </section>
 
-      {/* 4. Work With Us (Careers) */}
+      {/* ── SECTION 4: CAREERS FORM ── */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-blue-600 font-black uppercase tracking-[0.3em] text-[10px] block mb-4 italic">Opportunities</span>
-            <h2 className="text-5xl font-black text-slate-900 uppercase tracking-tighter italic">Work With Us!</h2>
-            <p className="text-slate-500 mt-4 max-w-2xl mx-auto font-medium">Join Atlantic Polymers Pvt. Ltd. and be a part of the future of building materials.</p>
-          </div>
+          {/* Header */}
+          <MotionDiv
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl mb-16 mx-auto text-center"
+          >
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <div className="w-6 h-0.5 bg-brand-red" />
+              <span className="text-brand-red text-xs font-semibold uppercase tracking-[0.25em]">
+                Careers
+              </span>
+              <div className="w-6 h-0.5 bg-brand-red" />
+            </div>
+            <h2 className="font-display text-3xl md:text-4xl font-black text-slate-900 leading-tight mb-2">
+              Work With
+            </h2>
+            <h2 className="font-display text-3xl md:text-4xl font-black text-brand-red leading-tight mb-6">
+              Us.
+            </h2>
+            <p className="text-slate-500 text-sm leading-relaxed">
+              Join Atlantic Polymers Pvt. Ltd. and be part of the future of
+              building materials. We're always looking for driven people who
+              want to grow with us.
+            </p>
+          </MotionDiv>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-[3rem] p-8 md:p-12 border border-slate-200 shadow-sm relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-slate-50 -mr-32 -mt-32 rounded-full" />
-              
+          {/* Form card */}
+          <MotionDiv
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="max-w-4xl mx-auto"
+          >
+            <div className="bg-white rounded-2xl p-8 md:p-12 border border-slate-100 shadow-sm">
+              {/* Icon + title row */}
+              <div className="flex items-center gap-4 mb-10">
+                <div className="w-12 h-12 bg-brand-red rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-red/20">
+                  <Briefcase size={22} />
+                </div>
+                <h3 className="font-display text-2xl font-black text-slate-900">
+                  Apply Now
+                </h3>
+              </div>
+
+              {/* Success state */}
               {careerSubmitted ? (
-                <MotionDiv initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-12 relative z-10">
-                  <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white shadow-xl shadow-blue-200">
-                    <CheckCircle2 size={40} />
+                <MotionDiv
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4 }}
+                  className="bg-slate-50 rounded-2xl border border-slate-100 p-12 text-center"
+                >
+                  <div className="w-16 h-16 bg-brand-blue/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <CheckCircle2 className="text-brand-blue" size={32} />
                   </div>
-                  <h3 className="text-2xl font-black text-slate-900 uppercase mb-2">Application Sent!</h3>
-                  <p className="text-slate-500 font-medium">Our HR department will review your profile and get back to you.</p>
+                  <h4 className="font-display text-xl font-black text-slate-900 mb-2">
+                    Application Sent!
+                  </h4>
+                  <p className="text-slate-500 text-sm leading-relaxed">
+                    Our HR team will review your profile and get back to you
+                    soon.
+                  </p>
                 </MotionDiv>
               ) : (
-                <form onSubmit={handleCareerSubmit} className="relative z-10 space-y-8">
-                  <div className="grid md:grid-cols-2 gap-8">
+                <form onSubmit={handleCareerSubmit} className="space-y-6">
+                  {/* Row 1 */}
+                  <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Full Name</label>
-                      <input required type="text" className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-5 focus:ring-2 focus:ring-blue-600 transition-all font-medium" placeholder="Your Name" />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Post Applied For</label>
-                      <input required type="text" className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-5 focus:ring-2 focus:ring-blue-600 transition-all font-medium" placeholder="e.g. Area Sales Manager" />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Email Address</label>
-                      <input required type="email" className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-5 focus:ring-2 focus:ring-blue-600 transition-all font-medium" placeholder="email@example.com" />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Phone Number</label>
-                      <input required type="tel" className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-5 focus:ring-2 focus:ring-blue-600 transition-all font-medium" placeholder="+91 XXXX XXXX" />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Cover Message</label>
-                    <textarea rows={4} className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-5 focus:ring-2 focus:ring-blue-600 transition-all font-medium" placeholder="Tell us about your experience..."></textarea>
-                  </div>
-
-                  {/* CV Upload Section */}
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Upload CV (PDF / DOC)</label>
-                    <div 
-                      onClick={() => fileInputRef.current?.click()}
-                      className="border-2 border-dashed border-slate-300 rounded-[2rem] p-10 flex flex-col items-center justify-center cursor-pointer hover:border-blue-500 hover:bg-blue-50 transition-all group"
-                    >
-                      <input 
-                        type="file" 
-                        ref={fileInputRef} 
-                        onChange={handleFileUpload} 
-                        className="hidden" 
-                        accept=".pdf,.doc,.docx"
+                      <label className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
+                        Full Name *
+                      </label>
+                      <input
+                        required
+                        type="text"
+                        placeholder="Your Name"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm
+                             focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
+                             transition-all"
                       />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
+                        Post Applied For *
+                      </label>
+                      <input
+                        required
+                        type="text"
+                        placeholder="e.g. Area Sales Manager"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm
+                             focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
+                             transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Row 2 */}
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
+                        Email Address *
+                      </label>
+                      <input
+                        required
+                        type="email"
+                        placeholder="email@example.com"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm
+                             focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
+                             transition-all"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
+                        Phone Number *
+                      </label>
+                      <input
+                        required
+                        type="tel"
+                        placeholder="+91 XXXXX XXXXX"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm
+                             focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
+                             transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Cover message */}
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
+                      Cover Message
+                    </label>
+                    <textarea
+                      rows={4}
+                      placeholder="Tell us about your experience and why you'd like to join us..."
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm
+                           focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
+                           transition-all resize-none"
+                    />
+                  </div>
+
+                  {/* File upload */}
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
+                      Upload CV (PDF / DOC)
+                    </label>
+
+                    {/* Hidden real input */}
+                    <input
+                      type="file"
+                      ref={fileInputRef}
+                      onChange={handleFileUpload}
+                      accept=".pdf,.doc,.docx"
+                      className="hidden"
+                    />
+
+                    {/* Styled upload area */}
+                    <div
+                      onClick={() => fileInputRef.current?.click()}
+                      className="border-2 border-dashed border-slate-200 rounded-2xl p-10
+                           flex flex-col items-center justify-center cursor-pointer
+                           hover:border-brand-blue hover:bg-brand-blue/5
+                           transition-all duration-300 group"
+                    >
                       {fileName ? (
-                        <div className="flex items-center gap-3 bg-blue-600 text-white px-6 py-3 rounded-full shadow-lg">
-                          <FileText size={20} />
-                          <span className="font-bold text-sm">{fileName}</span>
-                          <X 
-                            size={16} 
-                            className="cursor-pointer hover:text-red-200" 
+                        /* File selected state */
+                        <div className="flex items-center gap-3 bg-brand-blue/10 text-brand-blue px-6 py-3 rounded-xl">
+                          <FileText size={18} />
+                          <span className="font-semibold text-sm">
+                            {fileName}
+                          </span>
+                          <button
+                            type="button"
                             onClick={(e) => {
                               e.stopPropagation();
                               setFileName(null);
-                            }} 
-                          />
+                            }}
+                            className="hover:text-brand-red transition-colors ml-2"
+                          >
+                            <X size={15} />
+                          </button>
                         </div>
                       ) : (
+                        /* Empty state */
                         <>
-                          <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center text-slate-400 mb-4 group-hover:scale-110 group-hover:bg-blue-100 group-hover:text-blue-600 transition-all">
-                            <Upload size={32} />
+                          <div
+                            className="w-14 h-14 bg-slate-100 rounded-2xl flex items-center justify-center mb-4
+                                    group-hover:bg-brand-blue/10 group-hover:text-brand-blue transition-all"
+                          >
+                            <Upload
+                              className="text-slate-400 group-hover:text-brand-blue transition-colors"
+                              size={24}
+                            />
                           </div>
-                          <p className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">Drag & drop or click to upload CV</p>
+                          <p className="text-slate-500 text-sm font-medium mb-1">
+                            Click to upload your CV
+                          </p>
+                          <p className="text-slate-400 text-xs">
+                            PDF, DOC, or DOCX — max 5MB
+                          </p>
                         </>
                       )}
                     </div>
                   </div>
 
-                  <button type="submit" className="w-full bg-slate-900 hover:bg-blue-600 text-white font-black py-5 rounded-2xl flex items-center justify-center gap-3 transition-all shadow-xl shadow-slate-200 uppercase tracking-[0.2em] text-xs">
-                    Apply Now
-                    <Briefcase size={18} />
+                  {/* Submit */}
+                  <button
+                    type="submit"
+                    className="inline-flex items-center gap-2 bg-brand-dark hover:bg-brand-red text-white
+                         px-8 py-3 rounded-xl text-sm font-bold uppercase tracking-wider
+                         transition-all duration-200 shadow-lg"
+                  >
+                    Submit Application <Briefcase size={15} />
                   </button>
                 </form>
               )}
             </div>
-          </div>
+          </MotionDiv>
         </div>
       </section>
 
-      {/* 6. MAP FEATURE */}
-      <section className="pt-24 pb-4">
-        <div className="max-w-[1400px] mx-auto px-4">
-          <div className="relative rounded-[3rem] overflow-hidden shadow-2xl bg-slate-100 min-h-[500px] border-8 border-white">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.876442654316!2d72.84439031121307!3d19.200593681944627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b713455160cb%3A0xc4864c3c3a44d03!2sSejal%20Encasa!5e0!3m2!1sen!2sin!4v1710174123456!5m2!1sen!2sin" 
-              className="absolute inset-0 w-full h-full grayscale hover:grayscale-0 transition-all duration-700"
-              style={{ border: 0 }} 
-              allowFullScreen 
-              loading="lazy" 
+      {/* ── SECTION 5: MAP ── */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header */}
+          <MotionDiv
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl mx-auto text-center mb-16"
+          >
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <div className="w-6 h-0.5 bg-brand-blue" />
+              <span className="text-brand-blue text-xs font-semibold uppercase tracking-[0.25em]">
+                Find Us
+              </span>
+              <div className="w-6 h-0.5 bg-brand-blue" />
+            </div>
+            <h2 className="font-display text-3xl md:text-4xl font-black text-slate-900 leading-tight mb-2">
+              Come Visit Our
+            </h2>
+            <h2 className="font-display text-3xl md:text-4xl font-black text-brand-red leading-tight mb-6">
+              Office.
+            </h2>
+            <p className="text-slate-500 text-sm leading-relaxed">
+              Sejal Encasa, Office No. 4A, 4th Floor, S.V. Road, Kandivali
+              (West), Mumbai — 400067.
+            </p>
+          </MotionDiv>
+
+          {/* Map + info card */}
+          <MotionDiv
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-100"
+            style={{ height: "500px" }}
+          >
+            {/* Map iframe */}
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.876442654316!2d72.84439031121307!3d19.200593681944627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b713455160cb%3A0xc4864c3c3a44d03!2sSejal%20Encasa!5e0!3m2!1sen!2sin!4v1710174123456!5m2!1sen!2sin"
+              className="w-full h-full grayscale hover:grayscale-0 transition-all duration-700"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-            
-            <div className="absolute top-8 left-8 bg-white/90 backdrop-blur-md p-8 rounded-[2rem] shadow-2xl max-w-xs border border-white">
-              <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-200">
-                <Navigation size={24} />
+            />
+
+            {/* Floating info card — overlaid on top-left of map */}
+            <div className="absolute top-6 right-6 bg-white rounded-2xl shadow-xl border border-slate-100 p-6 max-w-xs">
+              <div className="w-10 h-10 bg-brand-blue/10 rounded-xl flex items-center justify-center mb-4">
+                <Navigation className="text-brand-blue" size={18} />
               </div>
-              <h3 className="text-xl font-black text-slate-900 mb-2 uppercase tracking-tight">Our Location</h3>
-              <p className="text-slate-500 text-sm font-medium leading-relaxed mb-6">
-                Sejal Encasa, Office No. 4A, 4th Floor, Kandivali (West), Mumbai - 400067.
+              <h4 className="font-display font-black text-slate-900 text-base mb-1">
+                Our Office
+              </h4>
+              <p className="text-slate-500 text-xs leading-relaxed mb-4">
+                Sejal Encasa, Office No. 4A, 4th Floor, Kandivali (West), Mumbai
+                — 400067.
               </p>
-              <a 
-                href="https://maps.app.goo.gl/YourActualLink" 
-                target="_blank" 
+
+              <a
+                href="https://maps.app.goo.gl/YourActualLink"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-blue-600 font-black uppercase tracking-widest text-[10px] hover:gap-4 transition-all"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-brand-blue hover:gap-4 transition-all duration-200"
               >
-                Get Directions
-                <Navigation size={14} />
+                Get Directions <ArrowRight size={14} />
               </a>
             </div>
-          </div>
+          </MotionDiv>
         </div>
       </section>
     </div>
