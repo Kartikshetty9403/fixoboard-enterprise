@@ -22,27 +22,115 @@ const MotionDiv = motion.div as any;
 const MotionSection = motion.section as any;
 
 const ContactPage: React.FC = () => {
-  const [inquirySubmitted, setInquirySubmitted] = useState(false);
-  const [careerSubmitted, setCareerSubmitted] = useState(false);
+  type FormStatus = "idle" | "submitting" | "success" | "error";
+
+  const [inquiryData, setInquiryData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    message: "",
+  });
+  const [inquiryStatus, setInquiryStatus] = useState<FormStatus>("idle");
+  const [inquiryError, setInquiryError] = useState<string | null>(null);
+
+  const [careerData, setCareerData] = useState({
+    fullName: "",
+    postAppliedFor: "",
+    email: "",
+    phone: "",
+    coverMessage: "",
+  });
+  const [careerStatus, setCareerStatus] = useState<FormStatus>("idle");
+  const [careerError, setCareerError] = useState<string | null>(null);
+  const [cvFile, setCvFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
+      setCvFile(e.target.files[0]);
       setFileName(e.target.files[0].name);
     }
   };
 
-  const handleInquirySubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setInquirySubmitted(true);
-    setTimeout(() => setInquirySubmitted(false), 5000);
+  const handleInquiryChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setInquiryData({ ...inquiryData, [e.target.name]: e.target.value });
   };
 
-  const handleCareerSubmit = (e: React.FormEvent) => {
+  const handleInquirySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setCareerSubmitted(true);
-    setTimeout(() => setCareerSubmitted(false), 5000);
+    setInquiryStatus("submitting");
+    setInquiryError(null);
+
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(inquiryData),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Something went wrong.");
+
+      setInquiryStatus("success");
+      setInquiryData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        message: "",
+      });
+      setTimeout(() => setInquiryStatus("idle"), 5000);
+    } catch (err: any) {
+      setInquiryStatus("error");
+      setInquiryError(err.message || "Something went wrong. Please try again.");
+    }
+  };
+
+  const handleCareerChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setCareerData({ ...careerData, [e.target.name]: e.target.value });
+  };
+
+  const handleCareerSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setCareerStatus("submitting");
+    setCareerError(null);
+
+    try {
+      const formData = new FormData();
+      formData.append("fullName", careerData.fullName);
+      formData.append("postAppliedFor", careerData.postAppliedFor);
+      formData.append("email", careerData.email);
+      formData.append("phone", careerData.phone);
+      formData.append("coverMessage", careerData.coverMessage);
+      if (cvFile) formData.append("cv", cvFile);
+
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/careers`, {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Something went wrong.");
+
+      setCareerStatus("success");
+      setCareerData({
+        fullName: "",
+        postAppliedFor: "",
+        email: "",
+        phone: "",
+        coverMessage: "",
+      });
+      setCvFile(null);
+      setFileName(null);
+      setTimeout(() => setCareerStatus("idle"), 5000);
+    } catch (err: any) {
+      setCareerStatus("error");
+      setCareerError(err.message || "Something went wrong. Please try again.");
+    }
   };
 
   const contactInfo = [
@@ -224,7 +312,7 @@ const ContactPage: React.FC = () => {
                 </div>
 
                 {/* Success state */}
-                {inquirySubmitted ? (
+                {inquiryStatus === "success" ? (
                   <MotionDiv
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -255,10 +343,13 @@ const ContactPage: React.FC = () => {
                       <input
                         required
                         type="text"
+                        name="name"
+                        value={inquiryData.name}
+                        onChange={handleInquiryChange}
                         placeholder="Full Name"
                         className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm
-                             focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
-                             transition-all"
+       focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
+       transition-all"
                       />
                     </div>
 
@@ -270,6 +361,9 @@ const ContactPage: React.FC = () => {
                       <input
                         required
                         type="email"
+                        name="email"
+                        value={inquiryData.email}
+                        onChange={handleInquiryChange}
                         placeholder="email@company.com"
                         className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm
                              focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
@@ -285,10 +379,13 @@ const ContactPage: React.FC = () => {
                       <input
                         required
                         type="tel"
+                        name="phone"
+                        value={inquiryData.phone}
+                        onChange={handleInquiryChange}
                         placeholder="+91 XXXXX XXXXX"
                         className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm
-                             focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
-                             transition-all"
+                           focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
+                               transition-all"
                       />
                     </div>
 
@@ -299,6 +396,9 @@ const ContactPage: React.FC = () => {
                       </label>
                       <input
                         type="text"
+                        name="company"
+                        value={inquiryData.company}
+                        onChange={handleInquiryChange}
                         placeholder="Business Name"
                         className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm
                              focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
@@ -314,6 +414,9 @@ const ContactPage: React.FC = () => {
                       <textarea
                         required
                         rows={5}
+                        name="message"
+                        value={inquiryData.message}
+                        onChange={handleInquiryChange}
                         placeholder="Describe your project requirements, quantities needed, or any questions..."
                         className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm
                              focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
@@ -322,14 +425,24 @@ const ContactPage: React.FC = () => {
                     </div>
 
                     {/* Submit */}
-                    <div className="md:col-span-2">
+                    <div className="md:col-span-2 space-y-3">
+                      {inquiryStatus === "error" && (
+                        <p className="text-brand-red text-sm font-medium">
+                          {inquiryError}
+                        </p>
+                      )}
                       <button
                         type="submit"
+                        disabled={inquiryStatus === "submitting"}
                         className="inline-flex items-center gap-2 bg-brand-red hover:bg-brand-red-dark text-white
-                             px-8 py-3 rounded-xl text-sm font-bold uppercase tracking-wider
-                             transition-all hover:scale-[1.02] shadow-lg shadow-brand-red/20"
+                         px-8 py-3 rounded-xl text-sm font-bold uppercase tracking-wider
+                         transition-all hover:scale-[1.02] shadow-lg shadow-brand-red/20
+                         disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                       >
-                        Submit Inquiry <Send size={15} />
+                        {inquiryStatus === "submitting"
+                          ? "Sending..."
+                          : "Submit Inquiry"}{" "}
+                        <Send size={15} />
                       </button>
                     </div>
                   </form>
@@ -474,7 +587,7 @@ const ContactPage: React.FC = () => {
               </div>
 
               {/* Success state */}
-              {careerSubmitted ? (
+              {careerStatus === "success" ? (
                 <MotionDiv
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -503,10 +616,13 @@ const ContactPage: React.FC = () => {
                       <input
                         required
                         type="text"
+                        name="fullName"
+                        value={careerData.fullName}
+                        onChange={handleCareerChange}
                         placeholder="Your Name"
                         className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm
-                             focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
-                             transition-all"
+                        focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
+                        transition-all"
                       />
                     </div>
                     <div className="space-y-2">
@@ -516,6 +632,9 @@ const ContactPage: React.FC = () => {
                       <input
                         required
                         type="text"
+                        name="postAppliedFor"
+                        value={careerData.postAppliedFor}
+                        onChange={handleCareerChange}
                         placeholder="e.g. Area Sales Manager"
                         className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm
                              focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
@@ -533,6 +652,9 @@ const ContactPage: React.FC = () => {
                       <input
                         required
                         type="email"
+                        name="email"
+                        value={careerData.email}
+                        onChange={handleCareerChange}
                         placeholder="email@example.com"
                         className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm
                              focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
@@ -546,10 +668,13 @@ const ContactPage: React.FC = () => {
                       <input
                         required
                         type="tel"
+                        name="phone"
+                        value={careerData.phone}
+                        onChange={handleCareerChange}
                         placeholder="+91 XXXXX XXXXX"
                         className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm
-                             focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
-                             transition-all"
+                        focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
+                        transition-all"
                       />
                     </div>
                   </div>
@@ -561,6 +686,9 @@ const ContactPage: React.FC = () => {
                     </label>
                     <textarea
                       rows={4}
+                      name="coverMessage"
+                      value={careerData.coverMessage}
+                      onChange={handleCareerChange}
                       placeholder="Tell us about your experience and why you'd like to join us..."
                       className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm
                            focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
@@ -633,14 +761,26 @@ const ContactPage: React.FC = () => {
                   </div>
 
                   {/* Submit */}
-                  <button
-                    type="submit"
-                    className="inline-flex items-center gap-2 bg-brand-dark hover:bg-brand-red text-white
-                         px-8 py-3 rounded-xl text-sm font-bold uppercase tracking-wider
-                         transition-all duration-200 shadow-lg"
-                  >
-                    Submit Application <Briefcase size={15} />
-                  </button>
+                  <div className="space-y-3">
+                    {careerStatus === "error" && (
+                      <p className="text-brand-red text-sm font-medium">
+                        {careerError}
+                      </p>
+                    )}
+                    <button
+                      type="submit"
+                      disabled={careerStatus === "submitting"}
+                      className="inline-flex items-center gap-2 bg-brand-dark hover:bg-brand-red text-white
+                      px-8 py-3 rounded-xl text-sm font-bold uppercase tracking-wider
+                      transition-all duration-200 shadow-lg
+                      disabled:opacity-60 disabled:cursor-not-allowed"
+                    >
+                      {careerStatus === "submitting"
+                        ? "Submitting..."
+                        : "Submit Application"}{" "}
+                      <Briefcase size={15} />
+                    </button>
+                  </div>
                 </form>
               )}
             </div>
