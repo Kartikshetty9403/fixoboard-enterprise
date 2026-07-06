@@ -21,17 +21,61 @@ import {
 const MotionDiv = motion.div as any;
 
 const GetQuotePage: React.FC = () => {
-  const [formStatus, setFormStatus] = useState<
-    "idle" | "submitting" | "success"
-  >("idle");
+  type FormStatus = "idle" | "submitting" | "success" | "error";
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [quoteData, setQuoteData] = useState({
+    fullName: "",
+    companyName: "",
+    email: "",
+    phone: "",
+    productCategory: "",
+    application: "",
+    quantity: "",
+    thicknessSize: "",
+    message: "",
+  });
+  const [formStatus, setFormStatus] = useState<FormStatus>("idle");
+  const [formError, setFormError] = useState<string | null>(null);
+
+  const handleQuoteChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
+    setQuoteData({ ...quoteData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus("submitting");
-    // Simulate API call
-    setTimeout(() => {
+    setFormError(null);
+
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/quote`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(quoteData),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Something went wrong.");
+
       setFormStatus("success");
-    }, 1500);
+      setQuoteData({
+        fullName: "",
+        companyName: "",
+        email: "",
+        phone: "",
+        productCategory: "",
+        application: "",
+        quantity: "",
+        thicknessSize: "",
+        message: "",
+      });
+      setTimeout(() => setFormStatus("idle"), 5000);
+    } catch (err: any) {
+      setFormStatus("error");
+      setFormError(err.message || "Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -199,6 +243,9 @@ const GetQuotePage: React.FC = () => {
                     <input
                       required
                       type="text"
+                      name="fullName"
+                      value={quoteData.fullName}
+                      onChange={handleQuoteChange}
                       placeholder="First Last"
                       className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm
                            focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
@@ -213,6 +260,9 @@ const GetQuotePage: React.FC = () => {
                     </label>
                     <input
                       type="text"
+                      name="companyName"
+                      value={quoteData.companyName}
+                      onChange={handleQuoteChange}
                       placeholder="Your business name"
                       className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm
                            focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
@@ -228,6 +278,9 @@ const GetQuotePage: React.FC = () => {
                     <input
                       required
                       type="email"
+                      name="email"
+                      value={quoteData.email}
+                      onChange={handleQuoteChange}
                       placeholder="name@company.com"
                       className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm
                            focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
@@ -243,6 +296,9 @@ const GetQuotePage: React.FC = () => {
                     <input
                       required
                       type="tel"
+                      name="phone"
+                      value={quoteData.phone}
+                      onChange={handleQuoteChange}
                       placeholder="+91 XXXXX XXXXX"
                       className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm
                            focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
@@ -258,6 +314,9 @@ const GetQuotePage: React.FC = () => {
                     <div className="relative">
                       <select
                         required
+                        name="productCategory"
+                        value={quoteData.productCategory}
+                        onChange={handleQuoteChange}
                         className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm
                              focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
                              transition-all appearance-none pr-10 text-slate-700"
@@ -286,6 +345,9 @@ const GetQuotePage: React.FC = () => {
                     <div className="relative">
                       <select
                         required
+                        name="application"
+                        value={quoteData.application}
+                        onChange={handleQuoteChange}
                         className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm
                              focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
                              transition-all appearance-none pr-10 text-slate-700"
@@ -315,6 +377,9 @@ const GetQuotePage: React.FC = () => {
                     </label>
                     <input
                       type="text"
+                      name="quantity"
+                      value={quoteData.quantity}
+                      onChange={handleQuoteChange}
                       placeholder="e.g. 100 Sheets / 20 Doors"
                       className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm
                            focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
@@ -329,6 +394,9 @@ const GetQuotePage: React.FC = () => {
                     </label>
                     <input
                       type="text"
+                      name="thicknessSize"
+                      value={quoteData.thicknessSize}
+                      onChange={handleQuoteChange}
                       placeholder="e.g. 18mm, 8x4ft"
                       className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm
                            focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
@@ -343,6 +411,9 @@ const GetQuotePage: React.FC = () => {
                     </label>
                     <textarea
                       rows={4}
+                      name="message"
+                      value={quoteData.message}
+                      onChange={handleQuoteChange}
                       placeholder="Tell us more about your project timeline, location, or any specific requirements..."
                       className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm
                            focus:outline-none focus:ring-2 focus:ring-brand-blue/40 focus:border-brand-blue
@@ -351,7 +422,12 @@ const GetQuotePage: React.FC = () => {
                   </div>
 
                   {/* Submit */}
-                  <div className="md:col-span-2">
+                  <div className="md:col-span-2 space-y-3">
+                    {formStatus === "error" && (
+                      <p className="text-brand-red text-sm font-medium">
+                        {formError}
+                      </p>
+                    )}
                     <button
                       type="submit"
                       disabled={formStatus === "submitting"}
