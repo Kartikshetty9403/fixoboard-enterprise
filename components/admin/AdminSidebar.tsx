@@ -8,7 +8,8 @@ import {
   LogOut, 
   ExternalLink,
   ChevronRight,
-  ShieldCheck
+  ShieldCheck,
+  Headphones
 } from 'lucide-react';
 
 const AdminSidebar: React.FC = () => {
@@ -17,6 +18,7 @@ const AdminSidebar: React.FC = () => {
 
   const menuItems = [
     { name: 'Dashboard', icon: <LayoutDashboard size={20} />, path: '/admin/dashboard' },
+    { name: 'Live Chat', icon: <Headphones size={20}/>, path: '/admin/live-chat'},
     { name: 'Gallery', icon: <ImageIcon size={20} />, path: '/admin/gallery' },
     { name: 'News & Updates', icon: <Newspaper size={20} />, path: '/admin/news' },
   ];
