@@ -9,6 +9,7 @@ import dotenv from "dotenv";
 import contactRouter from "./routes/contact";
 import quoteRouter from "./routes/quote";
 import chatRouter from "./routes/chat";
+import adminRouter from "./routes/admin";
 
 dotenv.config();
 
@@ -42,6 +43,7 @@ app.use(
 app.use("/api", contactRouter);
 app.use("/api", quoteRouter);
 app.use("/api", chatRouter);
+app.use("/api", adminRouter);
 
 // ── Live Chat Sockets ──
 // Separate from the /api/chat REST route above (that's the AI bot).
