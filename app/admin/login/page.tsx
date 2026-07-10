@@ -1,16 +1,22 @@
-
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { ShieldCheck, Lock, User, Eye, EyeOff, AlertCircle } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useNavigate, useLocation } from "react-router-dom";
+import {
+  ShieldCheck,
+  Lock,
+  User,
+  Eye,
+  EyeOff,
+  AlertCircle,
+} from "lucide-react";
 
 const MotionDiv = motion.div as any;
 
 const AdminLoginPage: React.FC = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -18,27 +24,38 @@ const AdminLoginPage: React.FC = () => {
 
   useEffect(() => {
     // If already logged in, redirect to dashboard
-    if (sessionStorage.getItem('fixoboard_admin_auth') === 'true') {
-      navigate('/admin/dashboard');
+    if (localStorage.getItem("fixoboard_admin_token")) {
+      navigate("/admin/dashboard");
     }
   }, [navigate]);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    setError('');
+    setError("");
 
-    // Simulated Authentication - In real apps, this calls a backend
-    setTimeout(() => {
-      if (username === 'admin' && password === 'fixoboard@2026') {
-        sessionStorage.setItem('fixoboard_admin_auth', 'true');
-        const origin = (location.state as any)?.from || '/admin/dashboard';
-        navigate(origin);
-      } else {
-        setError('Invalid industrial credentials. Access denied.');
+    try {
+      const response = await fetch("http://localhost:5000/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError("Invalid industrial credentials. Access denied.");
         setIsLoading(false);
+        return;
       }
-    }, 1000);
+
+      localStorage.setItem("fixoboard_admin_token", data.token);
+      const origin = (location.state as any)?.from || "/admin/dashboard";
+      navigate(origin);
+    } catch (err) {
+      setError("Something went wrong. Please try again.");
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -57,15 +74,24 @@ const AdminLoginPage: React.FC = () => {
             <div className="w-16 h-16 bg-red-600 rounded-[1.5rem] flex items-center justify-center mx-auto mb-6 shadow-xl shadow-red-600/20">
               <ShieldCheck className="text-white" size={32} />
             </div>
-            <h1 className="text-white text-3xl font-black uppercase tracking-tighter italic">Fixoboard CMS</h1>
-            <p className="text-slate-500 text-[10px] font-bold uppercase tracking-[0.3em] mt-3">Authorized Access Only</p>
+            <h1 className="text-white text-3xl font-black uppercase tracking-tighter italic">
+              Fixoboard CMS
+            </h1>
+            <p className="text-slate-500 text-[10px] font-bold uppercase tracking-[0.3em] mt-3">
+              Authorized Access Only
+            </p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-6">
             <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Admin Username</label>
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">
+                Admin Username
+              </label>
               <div className="relative group">
-                <User className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-red-600 transition-colors" size={20} />
+                <User
+                  className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-red-600 transition-colors"
+                  size={20}
+                />
                 <input
                   autoFocus
                   required
@@ -79,12 +105,17 @@ const AdminLoginPage: React.FC = () => {
             </div>
 
             <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Secure Password</label>
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">
+                Secure Password
+              </label>
               <div className="relative group">
-                <Lock className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-red-600 transition-colors" size={20} />
+                <Lock
+                  className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-red-600 transition-colors"
+                  size={20}
+                />
                 <input
                   required
-                  type={showPassword ? 'text' : 'password'}
+                  type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full bg-slate-800/50 border border-white/5 text-white rounded-2xl p-5 pl-14 pr-14 focus:ring-2 focus:ring-red-600 transition-all outline-none font-medium"
@@ -116,7 +147,7 @@ const AdminLoginPage: React.FC = () => {
               type="submit"
               className="w-full bg-red-600 hover:bg-red-700 disabled:bg-slate-700 text-white font-black py-5 rounded-2xl shadow-xl shadow-red-600/20 uppercase tracking-[0.2em] text-xs transition-all active:scale-95"
             >
-              {isLoading ? 'Verifying...' : 'Authenticate Access'}
+              {isLoading ? "Verifying..." : "Authenticate Access"}
             </button>
           </form>
 

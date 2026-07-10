@@ -1,6 +1,5 @@
-
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -12,12 +11,33 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const [isChecking, setIsChecking] = useState(true);
 
   useEffect(() => {
-    const authStatus = sessionStorage.getItem('fixoboard_admin_auth');
-    if (authStatus !== 'true') {
-      navigate('/admin/login', { state: { from: location.pathname } });
-    } else {
-      setIsChecking(false);
-    }
+    const verifyToken = async () => {
+      const token = localStorage.getItem("fixoboard_admin_token");
+
+      if (!token) {
+        navigate("/admin/login", { state: { from: location.pathname } });
+        return;
+      }
+
+      try {
+        const response = await fetch("http://localhost:5000/api/admin/verify", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+
+        if (!response.ok) {
+          localStorage.removeItem("fixoboard_admin_token");
+          navigate("/admin/login", { state: { from: location.pathname } });
+          return;
+        }
+
+        setIsChecking(false);
+      } catch (err) {
+        localStorage.removeItem("fixoboard_admin_token");
+        navigate("/admin/login", { state: { from: location.pathname } });
+      }
+    };
+
+    verifyToken();
   }, [navigate, location]);
 
   if (isChecking) {
