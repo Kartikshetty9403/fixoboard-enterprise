@@ -57,15 +57,17 @@ router.post(
     }
 
     // req.file is populated by multer if a CV was attached — it's optional
-    // here since your form doesn't mark the upload as required
+    // here since your form doesn't mark the upload as required.
+    // With memoryStorage, the file exists only as a Buffer (req.file.buffer),
+    // never written to disk — no req.file.path anymore.
     const cvFilename = req.file ? req.file.originalname : null;
-    const cvPath = req.file ? req.file.path : null;
+    const cvBuffer = req.file ? req.file.buffer : null;
 
     try {
       const result = await pool.query(
         `INSERT INTO applications
-          (full_name, post_applied_for, email, phone, cover_message, cv_filename, cv_path)
-         VALUES ($1, $2, $3, $4, $5, $6, $7)
+          (full_name, post_applied_for, email, phone, cover_message, cv_filename)
+         VALUES ($1, $2, $3, $4, $5, $6)
          RETURNING id, created_at`,
         [
           fullName,
@@ -74,7 +76,6 @@ router.post(
           phone,
           coverMessage || null,
           cvFilename,
-          cvPath,
         ],
       );
 
@@ -85,7 +86,7 @@ router.post(
         phone,
         coverMessage,
         cvFilename,
-        cvPath,
+        cvBuffer,
       });
 
       res.status(201).json({

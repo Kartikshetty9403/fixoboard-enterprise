@@ -1,7 +1,6 @@
 // server/utils/email.ts
 import { Resend } from "resend";
 import dotenv from "dotenv";
-import fs from "fs";
 
 dotenv.config();
 
@@ -42,17 +41,16 @@ export async function sendCareerNotification(data: {
   phone: string;
   coverMessage?: string;
   cvFilename?: string | null;
-  cvPath?: string | null;
+  cvBuffer?: Buffer | null;
 }) {
   // Build the attachments array only if a CV was actually uploaded —
-  // Resend expects base64 content, not a file path, so we read the
-  // file off disk here and convert it right before sending.
+  // the buffer is already in memory (multer.memoryStorage), so no disk
+  // read is needed — just base64-encode it directly.
   const attachments = [];
-  if (data.cvPath && data.cvFilename) {
-    const fileBuffer = fs.readFileSync(data.cvPath);
+  if (data.cvBuffer && data.cvFilename) {
     attachments.push({
       filename: data.cvFilename,
-      content: fileBuffer.toString("base64"),
+      content: data.cvBuffer.toString("base64"),
     });
   }
 

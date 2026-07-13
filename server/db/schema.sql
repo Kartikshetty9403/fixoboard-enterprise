@@ -18,7 +18,6 @@ CREATE TABLE IF NOT EXISTS applications (
   phone VARCHAR(50) NOT NULL,
   cover_message TEXT,
   cv_filename VARCHAR(255),
-  cv_path VARCHAR(500),
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
@@ -40,8 +39,10 @@ CREATE TABLE quotes (
 CREATE TABLE IF NOT EXISTS chat_rooms (
   room_id VARCHAR(255) PRIMARY KEY,
   customer_name VARCHAR(255) NOT NULL,
+  status VARCHAR(20) NOT NULL DEFAULT 'active',
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  last_message_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+  last_message_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  ended_at TIMESTAMPTZ
 );
 
 CREATE TABLE IF NOT EXISTS chat_messages (
