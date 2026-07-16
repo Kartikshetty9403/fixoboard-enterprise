@@ -2,6 +2,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { LANGUAGES } from "./LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 import {
   Menu,
   X,
@@ -75,6 +78,7 @@ const Navbar: React.FC = () => {
 
   // useLocation() gives us the current URL path (e.g. "/products")
   const location = useLocation();
+  const { i18n } = useTranslation();
 
   // ── SCROLL DETECTION ───────────────────────────────────────────────────────
   // useEffect runs code AFTER the component renders.
@@ -242,6 +246,9 @@ const Navbar: React.FC = () => {
             {/* ── RIGHT SIDE: CTA + MOBILE TRIGGER ── */}
             <div className="flex items-center gap-3">
               {/* Get Quote — visible on desktop */}
+              <div className="hidden lg:block">
+                <LanguageSwitcher />
+              </div>
               <Link
                 to="/get-quote"
                 className="hidden lg:flex items-center gap-2 bg-brand-red hover:bg-brand-red-dark text-white px-5 py-2.5 rounded-xl text-sm font-bold uppercase tracking-wider transition-all shadow-lg shadow-brand-red/20 hover:shadow-brand-red/30 hover:scale-[1.02]"
@@ -315,6 +322,22 @@ const Navbar: React.FC = () => {
 
               {/* Mobile CTA + contact */}
               <div className="pt-4 mt-4 border-t border-slate-100 space-y-3">
+                {/* Language switcher — mobile */}
+                <div className="flex flex-wrap gap-2 pb-1">
+                  {LANGUAGES.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => i18n.changeLanguage(lang.code)}
+                      className={`px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors ${
+                        lang.code === i18n.language
+                          ? "bg-brand-blue text-white border-brand-blue"
+                          : "bg-white text-slate-500 border-slate-200 hover:border-brand-blue hover:text-brand-blue"
+                      }`}
+                    >
+                      {lang.nativeLabel}
+                    </button>
+                  ))}
+                </div>
                 <Link
                   to="/get-quote"
                   className="w-full bg-brand-red text-white py-4 rounded-xl text-center block font-bold uppercase tracking-wider text-sm shadow-lg shadow-brand-red/20"
