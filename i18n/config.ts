@@ -11,14 +11,20 @@ import frCommon from "./locales/fr/common.json";
 import arCommon from "./locales/ar/common.json";
 import zhCommon from "./locales/zh/common.json";
 
+// Page-specific namespaces are added alongside "common" as each page
+// gets translated — keeps common.json scoped to truly shared UI strings.
+import enHome from "./locales/en/home.json";
+import esHome from "./locales/es/home.json";
+import frHome from "./locales/fr/home.json";
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    resources: {
-      en: { common: enCommon },
-      es: { common: esCommon },
-      fr: { common: frCommon },
+   resources: {
+      en: { common: enCommon, home: enHome },
+      es: { common: esCommon, home: esHome },
+      fr: { common: frCommon, home: frHome },
       ar: { common: arCommon },
       zh: { common: zhCommon },
     },

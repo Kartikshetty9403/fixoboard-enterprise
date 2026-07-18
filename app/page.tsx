@@ -27,10 +27,12 @@ import {
 } from "lucide-react";
 import { products } from "../data/products";
 import ProductCard from "../components/product/ProductCard";
+import { useTranslation } from "react-i18next";
 
 const MotionDiv = motion.div as any;
 
 const HomePage: React.FC = () => {
+  const { t } = useTranslation("home");
   const [formStatus, setFormStatus] = useState<"idle" | "success">("idle");
 
   const handleFormSubmit = (e: React.FormEvent) => {
@@ -73,7 +75,7 @@ const HomePage: React.FC = () => {
               <div className="inline-flex items-center gap-2 mb-8">
                 <span className="w-2 h-2 rounded-full bg-brand-blue" />
                 <span className="text-brand-blue text-xs font-semibold uppercase tracking-[0.25em]">
-                  An Advanced Marine Ply
+                  {t("hero.badge")}
                 </span>
               </div>
 
@@ -84,10 +86,10 @@ const HomePage: React.FC = () => {
         */}
               <h1 className="font-display mb-6">
                 <span className="block text-3xl md:text-4xl lg:text-5xl font-bold text-slate-300 leading-tight">
-                  Advanced PVC / WPC Ply
+                  {t("hero.headingLine1")}
                 </span>
                 <span className="block text-4xl md:text-5xl lg:text-6xl font-black text-brand-red leading-tight mt-1">
-                  For a Sustainable Future.
+                  {t("hero.headingLine2")}
                 </span>
               </h1>
 
@@ -95,12 +97,11 @@ const HomePage: React.FC = () => {
               <div className="w-16 h-[2px] bg-brand-blue mb-8 mt-2" />
 
               <p className="text-lg text-slate-400 mb-10 leading-relaxed max-w-xl font-normal">
-                30+ years of mastery in the polymer industry. One of India's
-                largest producers, listed in the{" "}
+                {t("hero.introPre")}{" "}
                 <span className="text-white font-medium border-b border-brand-blue/60">
-                  Limca Book of Indian Records
+                  {t("hero.introHighlight")}
                 </span>{" "}
-                for innovation and pioneering achievements.
+                {t("hero.introPost")}
               </p>
 
               {/* 
@@ -113,7 +114,7 @@ const HomePage: React.FC = () => {
                   to="/products"
                   className="inline-flex items-center gap-2 bg-brand-red hover:bg-brand-red-dark text-white px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-wider transition-all shadow-lg shadow-brand-red/20 hover:scale-[1.02]"
                 >
-                  Explore Catalog
+                  {t("hero.exploreCatalog")}
                   <ArrowRight size={16} />
                 </Link>
 
@@ -122,23 +123,23 @@ const HomePage: React.FC = () => {
                   className="inline-flex items-center gap-2 border border-white/20 hover:border-brand-blue hover:text-brand-blue text-slate-300 px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-wider transition-all"
                 >
                   <FileDown size={16} />
-                  Download Catalogue
+                  {t("common:footer.downloadCatalogue")}
                 </a>
               </div>
 
               {/* Trust signals — quick stats below CTAs */}
               <div className="flex flex-wrap gap-8 mt-14 pt-10 border-t border-white/10">
                 {[
-                  { value: "30+", label: "Years in Industry" },
-                  { value: "Limca", label: "Book of Records" },
-                  { value: "SGS", label: "Certified Quality" },
+                  { value: "30+", labelKey: "hero.statYearsLabel" },
+                  { value: "Limca", labelKey: "hero.statRecordsLabel" },
+                  { value: "SGS", labelKey: "hero.statQualityLabel" },
                 ].map((stat) => (
-                  <div key={stat.label}>
+                  <div key={stat.labelKey}>
                     <span className="block text-2xl font-black text-white font-display">
                       {stat.value}
                     </span>
                     <span className="text-[11px] text-slate-500 uppercase tracking-widest font-medium">
-                      {stat.label}
+                      {t(stat.labelKey)}
                     </span>
                   </div>
                 ))}
@@ -150,7 +151,7 @@ const HomePage: React.FC = () => {
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden md:flex flex-col items-center gap-2">
           <span className="text-[10px] text-slate-500 uppercase tracking-widest font-medium">
-            Scroll
+            {t("hero.scroll")}
           </span>
           <div className="w-5 h-8 border border-slate-700 rounded-full flex justify-center pt-1.5">
             <div className="w-0.5 h-2 bg-brand-blue rounded-full" />
@@ -171,32 +172,32 @@ const HomePage: React.FC = () => {
               {
                 icon: <Globe size={20} />,
                 stat: "30+",
-                title: "Years of Expertise",
-                desc: "Three decades of polymer industry leadership.",
+                titleKey: "legacy.expertiseTitle",
+                descKey: "legacy.expertiseDesc",
                 color: "text-brand-blue",
                 bg: "bg-brand-blue/5",
               },
               {
                 icon: <Factory size={20} />,
                 stat: "Silvassa",
-                title: "Manufacturing Hub",
-                desc: "State-of-the-art production facility.",
+                titleKey: "legacy.hubTitle",
+                descKey: "legacy.hubDesc",
                 color: "text-brand-red",
                 bg: "bg-brand-red/5",
               },
               {
                 icon: <HistoryIcon size={20} />,
                 stat: "Limca",
-                title: "Book of Records",
-                desc: "Officially recognised for pioneering innovation.",
+                titleKey: "legacy.recordsTitle",
+                descKey: "legacy.recordsDesc",
                 color: "text-brand-blue",
                 bg: "bg-brand-blue/5",
               },
               {
                 icon: <Zap size={20} />,
                 stat: "Dubai",
-                title: "Global Operations",
-                desc: "International branch connecting global markets.",
+                titleKey: "legacy.globalTitle",
+                descKey: "legacy.globalDesc",
                 color: "text-brand-red",
                 bg: "bg-brand-red/5",
               },
@@ -224,13 +225,13 @@ const HomePage: React.FC = () => {
                     {item.stat}
                   </span>
                   <span className="block text-sm font-bold text-slate-800">
-                    {item.title}
+                    {t(item.titleKey)}
                   </span>
                 </div>
 
                 {/* Description — normal case, readable weight */}
                 <p className="text-sm text-slate-500 leading-relaxed font-normal">
-                  {item.desc}
+                  {t(item.descKey)}
                 </p>
 
                 {/* Bottom accent line — appears on hover */}
@@ -263,31 +264,26 @@ const HomePage: React.FC = () => {
               <div className="flex items-center gap-2 mb-6">
                 <div className="w-6 h-0.5 bg-brand-blue" />
                 <span className="text-brand-blue text-xs font-semibold uppercase tracking-[0.25em]">
-                  Innovation Hub
+                  {t("rnd.label")}
                 </span>
               </div>
 
               <h2 className="font-display text-3xl md:text-4xl font-black text-slate-900 leading-tight mb-2">
-                Manufacturing Excellence
+                {t("rnd.headingLine1")}
               </h2>
               <h2 className="font-display text-3xl md:text-4xl font-black text-brand-red leading-tight mb-8">
-                & Global Innovation.
+                {t("rnd.headingLine2")}
               </h2>
 
               <div className="space-y-4 text-slate-500 leading-relaxed mb-10">
                 <p>
-                  FIXOBOARD is produced at our state-of-the-art manufacturing
-                  facility in{" "}
-                  <span className="text-slate-800 font-semibold">Silvassa</span>
-                  . Our operations integrate international quality standards
-                  with economical pricing to deliver a superior alternative to
-                  wood.
+                  {t("rnd.paragraph1Pre")}{" "}
+                  <span className="text-slate-800 font-semibold">
+                    {t("rnd.paragraph1Highlight")}
+                  </span>
+                  {t("rnd.paragraph1Post")}
                 </p>
-                <p>
-                  Our dedicated R&D wing continuously innovates to meet the
-                  evolving needs of the furniture and construction industries —
-                  with time-bound, uninterrupted delivery schedules.
-                </p>
+                <p>{t("rnd.paragraph2")}</p>
               </div>
 
               {/* 
@@ -299,29 +295,29 @@ const HomePage: React.FC = () => {
                 {[
                   {
                     value: "30+",
-                    label: "Years Legacy",
+                    labelKey: "rnd.statYearsLabel",
                     color: "border-brand-red",
                   },
                   {
                     value: "100%",
-                    label: "Quality Checked",
+                    labelKey: "rnd.statQualityLabel",
                     color: "border-brand-blue",
                   },
                   {
                     value: "24/7",
-                    label: "Support Hub",
+                    labelKey: "rnd.statSupportLabel",
                     color: "border-brand-red",
                   },
                 ].map((stat) => (
                   <div
-                    key={stat.label}
+                    key={stat.labelKey}
                     className={`border-l-2 ${stat.color} pl-4`}
                   >
                     <span className="block text-3xl font-black font-display text-slate-900 leading-none mb-1">
                       {stat.value}
                     </span>
                     <span className="text-[11px] text-slate-400 uppercase tracking-widest font-medium">
-                      {stat.label}
+                      {t(stat.labelKey)}
                     </span>
                   </div>
                 ))}
@@ -332,7 +328,7 @@ const HomePage: React.FC = () => {
                 to="/about"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-brand-blue hover:gap-4 transition-all duration-200"
               >
-                Learn about our facility
+                {t("rnd.ctaLearnFacility")}
                 <ArrowRight size={15} />
               </Link>
             </MotionDiv>
@@ -369,10 +365,10 @@ const HomePage: React.FC = () => {
                   <Microscope className="text-brand-red" size={20} />
                 </div>
                 <h4 className="font-bold text-slate-900 text-sm mb-1">
-                  Continuous R&D
+                  {t("rnd.floatingCardTitle")}
                 </h4>
                 <p className="text-xs text-slate-400 leading-relaxed">
-                  Developing next-generation composites for industrial needs.
+                  {t("rnd.floatingCardDesc")}
                 </p>
               </div>
 
@@ -382,7 +378,7 @@ const HomePage: React.FC = () => {
         */}
               <div className="absolute -top-4 -right-4 bg-brand-blue text-white rounded-2xl px-5 py-3 shadow-lg hidden md:block">
                 <span className="text-xs font-bold uppercase tracking-wider">
-                  SGS Certified
+                  {t("rnd.sgsBadge")}
                 </span>
               </div>
             </MotionDiv>
@@ -400,20 +396,19 @@ const HomePage: React.FC = () => {
           <div className="flex items-center gap-2 mb-4">
             <div className="w-6 h-0.5 bg-emerald-500" />
             <span className="text-emerald-600 text-xs font-semibold uppercase tracking-[0.25em]">
-              Pro-Earth Alternative
+              {t("green.label")}
             </span>
           </div>
           <div className="grid lg:grid-cols-2 gap-8 mb-16">
             <div>
               <h2 className="font-display text-3xl md:text-4xl font-black text-slate-900 leading-tight mb-4">
-                A Step Towards <br />
-                <span className="text-emerald-600">Green Revolution.</span>
+                {t("green.headingLine1")} <br />
+                <span className="text-emerald-600">
+                  {t("green.headingLine2")}
+                </span>
               </h2>
               <p className="text-slate-500 leading-relaxed">
-                Illegal logging contributes to 14% of total global
-                deforestation. Fixoboard PVC/WPC Ply is a sustainable substitute
-                that delivers superior performance — without harvesting a single
-                tree.
+                {t("green.intro")}
               </p>
             </div>
           </div>
@@ -445,37 +440,29 @@ const HomePage: React.FC = () => {
                 {/* Pull quote */}
                 <div className="border-l-4 border-emerald-500 pl-5 mb-8">
                   <p className="text-lg font-semibold text-slate-800 leading-snug">
-                    "Fixoboard is not just a brand — it is an industrial
-                    initiative to save our ecosystems."
+                    "{t("green.quote")}"
                   </p>
                 </div>
 
                 <div className="space-y-3 text-slate-500 leading-relaxed text-sm mb-8">
-                  <p>
-                    Traditional plywood and wood panels place a heavy toll on
-                    our forests. Every Fixoboard product is designed to be a
-                    complete replacement — structurally and aesthetically.
-                  </p>
-                  <p>
-                    Our composite boards are 100% recyclable and produce zero
-                    toxic emissions across their entire lifespan.
-                  </p>
+                  <p>{t("green.paragraph1")}</p>
+                  <p>{t("green.paragraph2")}</p>
                 </div>
 
                 {/* Checklist */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                   {[
-                    "100% Environment Friendly",
-                    "Zero Toxic Emissions",
-                    "Fully Recyclable",
-                    "No Tree Harvesting",
-                  ].map((item) => (
-                    <div key={item} className="flex items-center gap-2.5">
+                    "green.checklistEnvironment",
+                    "green.checklistEmissions",
+                    "green.checklistRecyclable",
+                    "green.checklistNoHarvest",
+                  ].map((itemKey) => (
+                    <div key={itemKey} className="flex items-center gap-2.5">
                       <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
                         <CheckCircle2 size={12} className="text-emerald-600" />
                       </div>
                       <span className="text-xs font-semibold text-slate-700 uppercase tracking-wide">
-                        {item}
+                        {t(itemKey)}
                       </span>
                     </div>
                   ))}
@@ -487,7 +474,7 @@ const HomePage: React.FC = () => {
                   className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl text-sm font-bold uppercase tracking-wider transition-all shadow-lg shadow-emerald-600/20 hover:scale-[1.02]"
                 >
                   <Leaf size={15} />
-                  Go Green with Fixoboard
+                  {t("green.cta")}
                 </Link>
               </div>
             </MotionDiv>
@@ -497,24 +484,24 @@ const HomePage: React.FC = () => {
               {[
                 {
                   value: "14%",
-                  label: "Deforestation Impact",
-                  sub: "of global ecological damage caused by illegal logging",
+                  labelKey: "green.statDeforestationLabel",
+                  subKey: "green.statDeforestationSub",
                   color: "text-brand-red",
                   border: "border-brand-red/20",
                   bg: "bg-brand-red/5",
                 },
                 {
                   value: "100%",
-                  label: "Fully Recyclable",
-                  sub: "every board is a closed-loop recyclable composite",
+                  labelKey: "green.statRecyclableLabel",
+                  subKey: "green.statRecyclableSub",
                   color: "text-emerald-600",
                   border: "border-emerald-200",
                   bg: "bg-emerald-50",
                 },
                 {
                   value: "Zero",
-                  label: "Toxic Emissions",
-                  sub: "no harmful chemicals released across the product lifespan",
+                  labelKey: "green.statEmissionsLabel",
+                  subKey: "green.statEmissionsSub",
                   color: "text-brand-blue",
                   border: "border-brand-blue/20",
                   bg: "bg-brand-blue/5",
@@ -541,10 +528,10 @@ const HomePage: React.FC = () => {
                   {/* Label + description */}
                   <div>
                     <h4 className="text-sm font-bold text-slate-800 mb-0.5">
-                      {stat.label}
+                      {t(stat.labelKey)}
                     </h4>
                     <p className="text-xs text-slate-500 leading-relaxed">
-                      {stat.sub}
+                      {t(stat.subKey)}
                     </p>
                   </div>
                 </MotionDiv>
@@ -563,16 +550,16 @@ const HomePage: React.FC = () => {
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-6 h-0.5 bg-brand-red" />
                 <span className="text-brand-red text-xs font-semibold uppercase tracking-[0.25em]">
-                  Value Proposition
+                  {t("why.label")}
                 </span>
               </div>
               <h2 className="font-display text-3xl md:text-4xl font-black text-white leading-tight mb-6">
-                Why <span className="text-brand-red">Fixoboard?</span>
+                {t("why.headingPre")}{" "}
+                <span className="text-brand-red">{t("why.headingBrand")}</span>
               </h2>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
-              A new generation eco-friendly ply engineered to be a lifetime
-              investment for any project.
+              {t("why.subheading")}
             </p>
           </div>
 
@@ -592,50 +579,50 @@ const HomePage: React.FC = () => {
             {[
               {
                 icon: <Droplets size={20} />,
-                title: "Weather & Moisture",
-                desc: "Impervious to humid climates and direct water exposure.",
+                titleKey: "why.weatherTitle",
+                descKey: "why.weatherDesc",
                 color: "bg-brand-blue/20 text-brand-blue",
               },
               {
                 icon: <Flame size={20} />,
-                title: "Fire Resistant",
-                desc: "Self-extinguishing build for high-risk industrial safety.",
+                titleKey: "why.fireTitle",
+                descKey: "why.fireDesc",
                 color: "bg-brand-red/20 text-brand-red",
               },
               {
                 icon: <ShieldCheck size={20} />,
-                title: "Termite Proof",
-                desc: "Natural biological resistance against all types of pests.",
+                titleKey: "why.termiteTitle",
+                descKey: "why.termiteDesc",
                 color: "bg-brand-blue/20 text-brand-blue",
               },
               {
                 icon: <HeartPulse size={20} />,
-                title: "100% Lead Free",
-                desc: "Safe for healthcare, food storage, and clinical environments.",
+                titleKey: "why.leadFreeTitle",
+                descKey: "why.leadFreeDesc",
                 color: "bg-brand-red/20 text-brand-red",
               },
               {
                 icon: <Zap size={20} />,
-                title: "Mouldable",
-                desc: "Can be moulded and extruded into any shape or size.",
+                titleKey: "why.mouldableTitle",
+                descKey: "why.mouldableDesc",
                 color: "bg-brand-blue/20 text-brand-blue",
               },
               {
                 icon: <Leaf size={20} />,
-                title: "Recyclable",
-                desc: "Fully environment friendly with zero emissions.",
+                titleKey: "why.recyclableTitle",
+                descKey: "why.recyclableDesc",
                 color: "bg-emerald-500/20 text-emerald-400",
               },
               {
                 icon: <Award size={20} />,
-                title: "Lifetime Asset",
-                desc: "Highly durable construction that maintains value for decades.",
+                titleKey: "why.lifetimeTitle",
+                descKey: "why.lifetimeDesc",
                 color: "bg-brand-red/20 text-brand-red",
               },
               {
                 icon: <CheckCircle2 size={20} />,
-                title: "Hygienic",
-                desc: "Anti-bacterial surface easy to sanitize and maintain.",
+                titleKey: "why.hygienicTitle",
+                descKey: "why.hygienicDesc",
                 color: "bg-brand-blue/20 text-brand-blue",
               },
             ].map((feature, idx) => (
@@ -669,11 +656,11 @@ const HomePage: React.FC = () => {
                 </div>
 
                 <h4 className="text-sm font-bold text-white mb-2 leading-snug">
-                  {feature.title}
+                  {t(feature.titleKey)}
                 </h4>
 
                 <p className="text-xs text-slate-400 leading-relaxed group-hover:text-red-100 transition-colors duration-300">
-                  {feature.desc}
+                  {t(feature.descKey)}
                 </p>
 
                 {/* 
