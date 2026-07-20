@@ -1,0 +1,66 @@
+{
+  "hero": {
+    "breadcrumb": "About",
+    "label": "About Fixoboard",
+    "headingLine1": "Three Decades of",
+    "headingLine2": "Industrial Excellence.",
+    "subline": "Operating under Atlantic Polymers Pvt. Ltd., Fixoboard has become India's benchmark for PVC and WPC building materials — engineered for professionals who demand lasting quality.",
+    "pillYearsLabel": "Years Legacy",
+    "pillRecordLabel": "Record Holder"
+  },
+  "story": {
+    "label": "Our Story",
+    "headingLine1": "A Legacy of",
+    "headingLine2": "Master Polymers.",
+    "paragraph1": "Operating under the umbrella of <strong1>Atlantic Polymers Pvt. Ltd.</strong1>, our brand <strong2>Fixoboard</strong2> has become synonymous with industrial reliability. With over 30 years of history, we are one of India's largest producers and indenting houses for PVC products.",
+    "paragraph2": "Our inclusion in the <strong>Limca Book of Indian Records</strong> stands as an official testament to our achievements in product innovation. From our strategic branch in Dubai to our vast national footprint, we provide global sourcing expertise at an industrial scale.",
+    "stat1Label": "Years Industry Legacy",
+    "stat2Label": "Record for Achievement",
+    "since1994Title": "Since 1994",
+    "since1994Desc": "Continuous evolution from polymer indenting to advanced board manufacturing.",
+    "dubaiTitle": "Dubai Branch",
+    "dubaiDesc": "International sourcing and distribution hub connecting global markets."
+  },
+   "manufacturing": {
+    "label": "Manufacturing & R&D",
+    "headingLine1": "Built at Industrial",
+    "headingLine2": "Scale & Precision.",
+    "capability": {
+      "silvassaTitle": "Silvassa Facility",
+      "silvassaDesc": "High-capacity extrusion plant employing cutting-edge technology for consistent board density and dimensional accuracy.",
+      "qualityTitle": "International Quality",
+      "qualityDesc": "Every production batch adheres to rigorous international standards for thickness, density, and screw retention.",
+      "deliveryTitle": "Uninterrupted Delivery",
+      "deliveryDesc": "Time-bound schedules and robust logistics ensure your project stays on track without material delays."
+    },
+    "rnd": {
+      "label": "Research & Innovation",
+      "headingLine1": "Engineering",
+      "headingLine2": "The Next Era.",
+      "paragraph": "Our dedicated R&D department continuously refines polymer composites to develop materials that exceed current industrial benchmarks. We don't just supply — we innovate based on real-world furniture industry feedback.",
+      "checklist1": "Continuous product evolution",
+      "checklist2": "Client-centric customization",
+      "checklist3": "Advanced material synthesis",
+      "badgeTitle": "Active R&D",
+      "badgeSub": "Continuous Innovation"
+    }
+  },
+  "mission": {
+    "label": "Purpose & Direction",
+    "headingLine1": "What Drives",
+    "headingLine2": "Everything We Do.",
+    "missionTitle": "Our Mission",
+    "missionParagraph": "To manufacture and deliver world-class PVC and WPC building materials that empower architects, carpenters, and builders across India — with products that outlast, outperform, and out-value every traditional alternative.",
+    "missionPoint1": "Zero-compromise quality standards",
+    "missionPoint2": "Accessible to every market segment",
+    "missionPoint3": "Backed by 30+ years of expertise",
+    "visionTitle": "Our Vision",
+    "visionQuote": "To dominate the future by replacing every piece of traditional plywood, MDF, and particle board with a sustainable, industrial-grade composite that delivers <em>lifetime value.</em>",
+    "visionPoint1": "Lead the plywood replacement market",
+    "visionPoint2": "Complete furniture solution provider",
+    "visionPoint3": "India's largest WPC producer",
+    "pill1": "Lead Plywood Market",
+    "pill2": "Complete Furniture Solution",
+    "pill3": "Largest WPC Producer"
+  }
+}

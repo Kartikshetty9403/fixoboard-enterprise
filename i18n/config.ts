@@ -16,15 +16,18 @@ import zhCommon from "./locales/zh/common.json";
 import enHome from "./locales/en/home.json";
 import esHome from "./locales/es/home.json";
 import frHome from "./locales/fr/home.json";
+import enAbout from "./locales/en/about.json";
+import esAbout from "./locales/es/about.json";
+import frAbout from "./locales/fr/about.json";
 
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-   resources: {
-      en: { common: enCommon, home: enHome },
-      es: { common: esCommon, home: esHome },
-      fr: { common: frCommon, home: frHome },
+    resources: {
+      en: { common: enCommon, home: enHome, about: enAbout },
+       es: { common: esCommon, home: esHome, about: esAbout },
+  fr: { common: frCommon, home: frHome, about: frAbout },
       ar: { common: arCommon },
       zh: { common: zhCommon },
     },
@@ -36,4 +39,3 @@ i18n
   });
 
 export default i18n;
-  

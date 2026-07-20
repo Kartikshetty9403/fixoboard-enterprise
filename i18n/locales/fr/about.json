@@ -1,0 +1,66 @@
+{
+  "hero": {
+    "breadcrumb": "À propos",
+    "label": "À propos de Fixoboard",
+    "headingLine1": "Trois Décennies d'",
+    "headingLine2": "Excellence Industrielle.",
+    "subline": "Opérant sous Atlantic Polymers Pvt. Ltd., Fixoboard est devenue la référence indienne des matériaux de construction en PVC et WPC — conçus pour les professionnels exigeant une qualité durable.",
+    "pillYearsLabel": "Ans d'Héritage",
+    "pillRecordLabel": "Détenteur du Record"
+  },
+  "story": {
+    "label": "Notre Histoire",
+    "headingLine1": "Un Héritage de",
+    "headingLine2": "Maîtres du Polymère.",
+    "paragraph1": "Opérant sous l'égide d'<strong1>Atlantic Polymers Pvt. Ltd.</strong1>, notre marque <strong2>Fixoboard</strong2> est devenue synonyme de fiabilité industrielle. Avec plus de 30 ans d'histoire, nous sommes l'un des plus grands producteurs et maisons de représentation de PVC en Inde.",
+    "paragraph2": "Notre inscription au <strong>Limca Book of Indian Records</strong> témoigne officiellement de nos réalisations en matière d'innovation produit. De notre succursale stratégique à Dubaï à notre vaste présence nationale, nous offrons une expertise d'approvisionnement mondial à l'échelle industrielle.",
+    "stat1Label": "Ans d'Héritage Industriel",
+    "stat2Label": "Record de Réussite",
+    "since1994Title": "Depuis 1994",
+    "since1994Desc": "Évolution continue, de la représentation de polymères à la fabrication avancée de panneaux.",
+    "dubaiTitle": "Succursale de Dubaï",
+    "dubaiDesc": "Pôle international d'approvisionnement et de distribution reliant les marchés mondiaux."
+  },
+  "manufacturing": {
+    "label": "Fabrication et R&D",
+    "headingLine1": "Construit à l'Échelle",
+    "headingLine2": "Industrielle et de Précision.",
+    "capability": {
+      "silvassaTitle": "Site de Silvassa",
+      "silvassaDesc": "Usine d'extrusion à haute capacité utilisant une technologie de pointe pour une densité et une précision dimensionnelle constantes des panneaux.",
+      "qualityTitle": "Qualité Internationale",
+      "qualityDesc": "Chaque lot de production respecte des normes internationales rigoureuses d'épaisseur, de densité et de tenue des vis.",
+      "deliveryTitle": "Livraison Sans Interruption",
+      "deliveryDesc": "Des délais précis et une logistique solide garantissent que votre projet avance sans retard de matériaux."
+    },
+    "rnd": {
+      "label": "Recherche et Innovation",
+      "headingLine1": "Concevoir",
+      "headingLine2": "La Prochaine Ère.",
+      "paragraph": "Notre département R&D perfectionne en permanence les composites polymères pour développer des matériaux qui dépassent les normes industrielles actuelles. Nous ne faisons pas que fournir : nous innovons à partir des retours concrets du secteur de l'ameublement.",
+      "checklist1": "Évolution continue du produit",
+      "checklist2": "Personnalisation centrée sur le client",
+      "checklist3": "Synthèse avancée de matériaux",
+      "badgeTitle": "R&D Active",
+      "badgeSub": "Innovation Continue"
+    }
+  },
+  "mission": {
+    "label": "But et Direction",
+    "headingLine1": "Ce Qui Anime",
+    "headingLine2": "Tout Ce Que Nous Faisons.",
+    "missionTitle": "Notre Mission",
+    "missionParagraph": "Fabriquer et livrer des matériaux de construction en PVC et WPC de classe mondiale qui donnent aux architectes, menuisiers et constructeurs de toute l'Inde les moyens d'agir — avec des produits qui durent plus longtemps, performent mieux et valent plus que toute alternative traditionnelle.",
+    "missionPoint1": "Normes de qualité sans compromis",
+    "missionPoint2": "Accessible à tous les segments du marché",
+    "missionPoint3": "Soutenu par plus de 30 ans d'expertise",
+    "visionTitle": "Notre Vision",
+    "visionQuote": "Dominer l'avenir en remplaçant chaque contreplaqué, MDF et panneau de particules traditionnel par un composite durable de qualité industrielle offrant une <em>valeur à vie.</em>",
+    "visionPoint1": "Diriger le marché de remplacement du contreplaqué",
+    "visionPoint2": "Fournisseur de solutions complètes pour l'ameublement",
+    "visionPoint3": "Le plus grand producteur de WPC en Inde",
+    "pill1": "Leader du Marché du Contreplaqué",
+    "pill2": "Solution Complète pour l'Ameublement",
+    "pill3": "Plus Grand Producteur de WPC"
+  }
+}

@@ -21,10 +21,12 @@ import {
   Mail,
   ArrowRight,
 } from "lucide-react";
+import { useTranslation, Trans } from "react-i18next";
 
 const MotionDiv = motion.div as any;
 
 const AboutPage: React.FC = () => {
+  const { t } = useTranslation("about");
   return (
     <div className="bg-white">
       {/* HERO SECTION */}
@@ -50,33 +52,31 @@ const AboutPage: React.FC = () => {
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-400 mb-10">
               <Link to="/" className="hover:text-white transition-colors">
-                Home
+                {t("common:nav.home")}
               </Link>
               <ChevronRight size={12} />
-              <span className="text-white">About</span>
+              <span className="text-white">{t("hero.breadcrumb")}</span>
             </nav>
 
             {/* Section label — matches homepage pattern */}
             <div className="flex items-center gap-2 mb-6">
               <div className="w-6 h-0.5 bg-brand-red" />
               <span className="text-brand-red text-xs font-semibold uppercase tracking-[0.25em]">
-                About Fixoboard
+                {t("hero.label")}
               </span>
             </div>
 
             {/* Two-line heading */}
             <h1 className="font-display text-4xl md:text-6xl font-black text-white leading-tight mb-2">
-              Three Decades of
+              {t("hero.headingLine1")}
             </h1>
             <h1 className="font-display text-4xl md:text-6xl font-black text-brand-red leading-tight mb-8">
-              Industrial Excellence.
+              {t("hero.headingLine2")}
             </h1>
 
             {/* Subline */}
             <p className="text-lg md:text-xl text-slate-300 leading-relaxed font-medium max-w-2xl mb-12">
-              Operating under Atlantic Polymers Pvt. Ltd., Fixoboard has become
-              India's benchmark for PVC and WPC building materials — engineered
-              for professionals who demand lasting quality.
+              {t("hero.subline")}
             </p>
 
             {/* Stat pills */}
@@ -86,7 +86,7 @@ const AboutPage: React.FC = () => {
                   30+
                 </span>
                 <span className="text-slate-300 text-xs uppercase tracking-widest">
-                  Years Legacy
+                  {t("hero.pillYearsLabel")}
                 </span>
               </div>
               <div className="flex items-center gap-3 bg-white/10 border border-white/20 px-5 py-3 rounded-full">
@@ -94,7 +94,7 @@ const AboutPage: React.FC = () => {
                   Limca
                 </span>
                 <span className="text-slate-300 text-xs uppercase tracking-widest">
-                  Record Holder
+                  {t("hero.pillRecordLabel")}
                 </span>
               </div>
             </div>
@@ -117,40 +117,38 @@ const AboutPage: React.FC = () => {
               <div className="flex items-center gap-2 mb-6">
                 <div className="w-6 h-0.5 bg-brand-red" />
                 <span className="text-brand-red text-xs font-semibold uppercase tracking-[0.25em]">
-                  Our Story
+                  {t("story.label")}
                 </span>
               </div>
 
               {/* Two-line heading */}
               <h2 className="font-display text-3xl md:text-4xl font-black text-slate-900 leading-tight mb-2">
-                A Legacy of
+                {t("story.headingLine1")}
               </h2>
               <h2 className="font-display text-3xl md:text-4xl font-black text-brand-red leading-tight mb-8">
-                Master Polymers.
+                {t("story.headingLine2")}
               </h2>
 
               {/* Body text */}
               <div className="space-y-6 text-base text-slate-600 leading-relaxed">
                 <p>
-                  Operating under the umbrella of{" "}
-                  <strong className="text-slate-900">
-                    Atlantic Polymers Pvt. Ltd.
-                  </strong>
-                  , our brand{" "}
-                  <strong className="text-brand-blue">Fixoboard</strong> has
-                  become synonymous with industrial reliability. With over 30
-                  years of history, we are one of India's largest producers and
-                  indenting houses for PVC products.
+                  <Trans
+                    i18nKey="story.paragraph1"
+                    components={{
+                      strong1: <strong className="text-slate-900" />,
+                      strong2: <strong className="text-brand-blue" />,
+                    }}
+                  />
                 </p>
                 <p>
-                  Our inclusion in the{" "}
-                  <strong className="text-slate-900 border-b-2 border-brand-red">
-                    Limca Book of Indian Records
-                  </strong>{" "}
-                  stands as an official testament to our achievements in product
-                  innovation. From our strategic branch in Dubai to our vast
-                  national footprint, we provide global sourcing expertise at an
-                  industrial scale.
+                  <Trans
+                    i18nKey="story.paragraph2"
+                    components={{
+                      strong: (
+                        <strong className="text-slate-900 border-b-2 border-brand-red" />
+                      ),
+                    }}
+                  />
                 </p>
               </div>
 
@@ -161,7 +159,7 @@ const AboutPage: React.FC = () => {
                     30+
                   </span>
                   <span className="text-[11px] text-slate-400 uppercase tracking-widest">
-                    Years Industry Legacy
+                    {t("story.stat1Label")}
                   </span>
                 </div>
                 <div className="border-l-2 border-brand-blue pl-4">
@@ -169,7 +167,7 @@ const AboutPage: React.FC = () => {
                     Limca
                   </span>
                   <span className="text-[11px] text-slate-400 uppercase tracking-widest">
-                    Record for Achievement
+                    {t("story.stat2Label")}
                   </span>
                 </div>
               </div>
@@ -196,11 +194,10 @@ const AboutPage: React.FC = () => {
                   <div className="bg-brand-dark p-8 rounded-3xl text-white">
                     <HistoryIcon className="text-brand-red mb-4" size={32} />
                     <h4 className="font-display font-black text-sm mb-2">
-                      Since 1994
+                      {t("story.since1994Title")}
                     </h4>
                     <p className="text-[11px] text-slate-400 uppercase tracking-wide leading-relaxed">
-                      Continuous evolution from polymer indenting to advanced
-                      board manufacturing.
+                      {t("story.since1994Desc")}
                     </p>
                   </div>
                 </div>
@@ -210,11 +207,10 @@ const AboutPage: React.FC = () => {
                   <div className="bg-brand-blue p-8 rounded-3xl text-white shadow-xl shadow-brand-blue/20">
                     <Globe className="mb-4" size={32} />
                     <h4 className="font-display font-black text-sm mb-2">
-                      Dubai Branch
+                      {t("story.dubaiTitle")}
                     </h4>
                     <p className="text-[11px] text-blue-100 uppercase tracking-wide leading-relaxed">
-                      International sourcing and distribution hub connecting
-                      global markets.
+                      {t("story.dubaiDesc")}
                     </p>
                   </div>
                   <div className="h-64 rounded-3xl overflow-hidden shadow-xl border-4 border-white">
@@ -245,15 +241,15 @@ const AboutPage: React.FC = () => {
             <div className="flex items-center justify-center gap-2 mb-6">
               <div className="w-6 h-0.5 bg-brand-blue" />
               <span className="text-brand-blue text-xs font-semibold uppercase tracking-[0.25em]">
-                Manufacturing & R&D
+                {t("manufacturing.label")}
               </span>
               <div className="w-6 h-0.5 bg-brand-blue" />
             </div>
             <h2 className="font-display text-3xl md:text-4xl font-black text-slate-900 leading-tight mb-2">
-              Built at Industrial
+              {t("manufacturing.headingLine1")}
             </h2>
             <h2 className="font-display text-3xl md:text-4xl font-black text-brand-blue leading-tight">
-              Scale & Precision.
+              {t("manufacturing.headingLine2")}
             </h2>
           </MotionDiv>
 
@@ -261,23 +257,26 @@ const AboutPage: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
             {[
               {
+                key: "silvassa",
                 icon: <Factory size={32} className="text-brand-blue" />,
-                title: "Silvassa Facility",
-                desc: "High-capacity extrusion plant employing cutting-edge technology for consistent board density and dimensional accuracy.",
+                titleKey: "manufacturing.capability.silvassaTitle",
+                descKey: "manufacturing.capability.silvassaDesc",
               },
               {
+                key: "quality",
                 icon: <ShieldCheck size={32} className="text-brand-red" />,
-                title: "International Quality",
-                desc: "Every production batch adheres to rigorous international standards for thickness, density, and screw retention.",
+                titleKey: "manufacturing.capability.qualityTitle",
+                descKey: "manufacturing.capability.qualityDesc",
               },
               {
+                key: "delivery",
                 icon: <Clock size={32} className="text-brand-blue" />,
-                title: "Uninterrupted Delivery",
-                desc: "Time-bound schedules and robust logistics ensure your project stays on track without material delays.",
+                titleKey: "manufacturing.capability.deliveryTitle",
+                descKey: "manufacturing.capability.deliveryDesc",
               },
             ].map((item, idx) => (
               <MotionDiv
-                key={idx}
+                key={item.key}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -288,10 +287,10 @@ const AboutPage: React.FC = () => {
                   {item.icon}
                 </div>
                 <h4 className="font-display font-black text-slate-900 text-lg mb-3">
-                  {item.title}
+                  {t(item.titleKey)}
                 </h4>
                 <p className="text-slate-500 text-sm leading-relaxed">
-                  {item.desc}
+                  {t(item.descKey)}
                 </p>
               </MotionDiv>
             ))}
@@ -322,10 +321,10 @@ const AboutPage: React.FC = () => {
                   </div>
                   <div>
                     <span className="block font-display font-black text-slate-900 text-sm">
-                      Active R&D
+                      {t("manufacturing.rnd.badgeTitle")}
                     </span>
                     <span className="text-[11px] text-slate-400 uppercase tracking-widest">
-                      Continuous Innovation
+                      {t("manufacturing.rnd.badgeSub")}
                     </span>
                   </div>
                 </div>
@@ -342,35 +341,41 @@ const AboutPage: React.FC = () => {
               <div className="flex items-center gap-2 mb-6">
                 <div className="w-6 h-0.5 bg-brand-red" />
                 <span className="text-brand-red text-xs font-semibold uppercase tracking-[0.25em]">
-                  Research & Innovation
+                  {t("manufacturing.rnd.label")}
                 </span>
               </div>
               <h3 className="font-display text-3xl font-black text-slate-900 leading-tight mb-2">
-                Engineering
+                {t("manufacturing.rnd.headingLine1")}
               </h3>
               <h3 className="font-display text-3xl font-black text-brand-red leading-tight mb-6">
-                The Next Era.
+                {t("manufacturing.rnd.headingLine2")}
               </h3>
               <p className="text-slate-600 leading-relaxed mb-8">
-                Our dedicated R&D department continuously refines polymer
-                composites to develop materials that exceed current industrial
-                benchmarks. We don't just supply — we innovate based on
-                real-world furniture industry feedback.
+                {t("manufacturing.rnd.paragraph")}
               </p>
 
               {/* Checklist */}
               <div className="space-y-4">
                 {[
-                  "Continuous product evolution",
-                  "Client-centric customization",
-                  "Advanced material synthesis",
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-3">
+                  {
+                    key: "evolution",
+                    labelKey: "manufacturing.rnd.checklist1",
+                  },
+                  {
+                    key: "customization",
+                    labelKey: "manufacturing.rnd.checklist2",
+                  },
+                  {
+                    key: "synthesis",
+                    labelKey: "manufacturing.rnd.checklist3",
+                  },
+                ].map((item) => (
+                  <div key={item.key} className="flex items-center gap-3">
                     <div className="w-5 h-5 rounded-full bg-brand-red/10 flex items-center justify-center shrink-0">
                       <Zap size={11} className="text-brand-red" />
                     </div>
                     <span className="text-sm font-semibold text-slate-700">
-                      {item}
+                      {t(item.labelKey)}
                     </span>
                   </div>
                 ))}
@@ -401,15 +406,15 @@ const AboutPage: React.FC = () => {
             <div className="flex items-center justify-center gap-2 mb-6">
               <div className="w-6 h-0.5 bg-brand-red" />
               <span className="text-brand-red text-xs font-semibold uppercase tracking-[0.25em]">
-                Purpose & Direction
+                {t("mission.label")}
               </span>
               <div className="w-6 h-0.5 bg-brand-red" />
             </div>
             <h2 className="font-display text-3xl md:text-4xl font-black text-white leading-tight mb-2">
-              What Drives
+              {t("mission.headingLine1")}
             </h2>
             <h2 className="font-display text-3xl md:text-4xl font-black text-brand-red leading-tight">
-              Everything We Do.
+              {t("mission.headingLine2")}
             </h2>
           </MotionDiv>
 
@@ -427,23 +432,22 @@ const AboutPage: React.FC = () => {
                 <Target size={28} className="text-brand-red" />
               </div>
               <h3 className="font-display font-black text-white text-2xl mb-4">
-                Our Mission
+                {t("mission.missionTitle")}
               </h3>
               <p className="text-slate-300 leading-relaxed mb-6">
-                To manufacture and deliver world-class PVC and WPC building
-                materials that empower architects, carpenters, and builders
-                across India — with products that outlast, outperform, and
-                out-value every traditional alternative.
+                {t("mission.missionParagraph")}
               </p>
               <div className="space-y-3">
                 {[
-                  "Zero-compromise quality standards",
-                  "Accessible to every market segment",
-                  "Backed by 30+ years of expertise",
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-3">
+                  { key: "quality", labelKey: "mission.missionPoint1" },
+                  { key: "accessible", labelKey: "mission.missionPoint2" },
+                  { key: "experience", labelKey: "mission.missionPoint3" },
+                ].map((item) => (
+                  <div key={item.key} className="flex items-center gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-brand-red shrink-0" />
-                    <span className="text-slate-400 text-sm">{item}</span>
+                    <span className="text-slate-400 text-sm">
+                      {t(item.labelKey)}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -461,26 +465,31 @@ const AboutPage: React.FC = () => {
                 <Eye size={28} className="text-brand-blue" />
               </div>
               <h3 className="font-display font-black text-white text-2xl mb-4">
-                Our Vision
+                {t("mission.visionTitle")}
               </h3>
               <blockquote className="text-slate-300 leading-relaxed mb-6 border-l-2 border-brand-blue pl-4 italic">
-                "To dominate the future by replacing every piece of traditional
-                plywood, MDF, and particle board with a sustainable,
-                industrial-grade composite that delivers{" "}
-                <span className="text-brand-blue not-italic font-semibold">
-                  lifetime value.
-                </span>
+                "
+                <Trans
+                  i18nKey="mission.visionQuote"
+                  components={{
+                    em: (
+                      <span className="text-brand-blue not-italic font-semibold" />
+                    ),
+                  }}
+                />
                 "
               </blockquote>
               <div className="space-y-3">
                 {[
-                  "Lead the plywood replacement market",
-                  "Complete furniture solution provider",
-                  "India's largest WPC producer",
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-3">
+                  { key: "leadMarket", labelKey: "mission.visionPoint1" },
+                  { key: "fullSolution", labelKey: "mission.visionPoint2" },
+                  { key: "largestProducer", labelKey: "mission.visionPoint3" },
+                ].map((item) => (
+                  <div key={item.key} className="flex items-center gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-brand-blue shrink-0" />
-                    <span className="text-slate-400 text-sm">{item}</span>
+                    <span className="text-slate-400 text-sm">
+                      {t(item.labelKey)}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -496,15 +505,15 @@ const AboutPage: React.FC = () => {
             className="flex flex-wrap justify-center gap-4"
           >
             {[
-              "Lead Plywood Market",
-              "Complete Furniture Solution",
-              "Largest WPC Producer",
-            ].map((pill, idx) => (
+              { key: "leadMarket", labelKey: "mission.pill1" },
+              { key: "fullSolution", labelKey: "mission.pill2" },
+              { key: "largestProducer", labelKey: "mission.pill3" },
+            ].map((pill) => (
               <span
-                key={idx}
+                key={pill.key}
                 className="bg-white/5 border border-white/10 px-6 py-3 rounded-full text-[11px] font-semibold uppercase tracking-widest text-slate-300"
               >
-                {pill}
+                {t(pill.labelKey)}
               </span>
             ))}
           </MotionDiv>
