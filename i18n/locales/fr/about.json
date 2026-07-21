@@ -62,5 +62,68 @@
     "pill1": "Leader du Marché du Contreplaqué",
     "pill2": "Solution Complète pour l'Ameublement",
     "pill3": "Plus Grand Producteur de WPC"
+  },
+  "milestones": {
+    "label": "Notre Parcours",
+    "headingLine1": "Trois Décennies",
+    "headingLine2": "d'Étapes Clés.",
+    "founded": {
+      "title": "Fondée à Mumbai",
+      "desc": "Atlantic Polymers Pvt. Ltd. a été fondée à Mumbai comme l'une des premières maisons de représentation de polymères en Inde, posant les bases de trois décennies d'excellence."
+    },
+    "silvassa": {
+      "title": "Fabrication à Silvassa",
+      "desc": "Mise en service de notre site de fabrication à la pointe de la technologie à Silvassa, marquant le passage de la représentation à la production nationale à grande échelle."
+    },
+    "limca": {
+      "title": "Limca Book of Records",
+      "desc": "Fixoboard est entrée dans le Limca Book of Indian Records pour ses réalisations en innovation produit, une étape reconnue à l'échelle nationale dans notre secteur."
+    },
+    "dubai": {
+      "title": "Ouverture de la Succursale de Dubaï",
+      "desc": "Établissement d'une présence internationale avec notre succursale de Dubaï, permettant des capacités d'approvisionnement mondial et l'accès aux marchés internationaux."
+    },
+    "sgs": {
+      "title": "Certification SGS",
+      "desc": "Obtention de la certification internationale de qualité SGS, validant nos processus de fabrication selon les normes industrielles les plus rigoureuses au monde."
+    },
+    "wpc": {
+      "title": "Lancement de la Gamme de Produits WPC",
+      "desc": "Expansion dans le segment WPC avec portes, cadres de portes et panneaux, complétant la vision de Fixoboard d'un écosystème complet de matériaux de construction."
+    }
+  },
+  "green": {
+    "label": "Révolution Verte",
+    "headingLine1": "Préservation",
+    "headingLine2": "Par l'Ingénierie.",
+    "crisisTitle": "La Crise de la Déforestation",
+    "crisisDesc": "L'exploitation forestière illégale contribue à 14% des dommages écologiques mondiaux. Le contreplaqué traditionnel dépend de l'exploitation de ces ressources vitales.",
+    "alternativeTitle": "L'Alternative Fixoboard",
+    "alternativeDesc": "Chaque panneau produit est 100% recyclable, à zéro émission, et ne nuit à aucun arbre. C'est le choix durable par excellence.",
+    "ctaText": "Passez au Vert avec <brand>Fixoboard.</brand>",
+    "ctaButton": "Rejoindre le Mouvement",
+    "badgeLabel": "100% Durable",
+    "badgeDesc": "Site de production à zéro émission, alimenté selon des normes énergétiques éthiques à Silvassa."
+  },
+  "ctaBand": {
+    "label": "Travaillez Avec Nous",
+    "headingLine1": "Prêt à Construire",
+    "headingLine2": "Quelque Chose de Durable ?",
+    "quoteButton": "Demander un Devis",
+    "productsButton": "Voir les Produits",
+    "navLabel": "Navigation Rapide",
+    "navHeading": "Explorez la Gamme.",
+    "linkPvcWpcPly": "Contreplaqué PVC / WPC",
+    "linkWpcDoor": "Porte WPC",
+    "linkPrelaminatePly": "Contreplaqué Prélaminé",
+    "linkWpcDoorFrames": "Cadres de Porte WPC",
+    "linkPvcMarbleSheets": "Panneaux Marbre PVC"
+  },
+  "contactInfo": {
+    "label": "Contactez-Nous",
+    "heading": "Retrouvez-Nous Ici.",
+    "addressLabel": "Adresse",
+    "phoneLabel": "Téléphone",
+    "emailLabel": "E-mail"
   }
 }

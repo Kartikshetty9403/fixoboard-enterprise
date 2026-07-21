@@ -534,15 +534,15 @@ const AboutPage: React.FC = () => {
             <div className="flex items-center justify-center gap-2 mb-6">
               <div className="w-6 h-0.5 bg-brand-red" />
               <span className="text-brand-red text-xs font-semibold uppercase tracking-[0.25em]">
-                Our Journey
+                {t("milestones.label")}
               </span>
               <div className="w-6 h-0.5 bg-brand-red" />
             </div>
             <h2 className="font-display text-3xl md:text-4xl font-black text-slate-900 leading-tight mb-2">
-              Three Decades of
+              {t("milestones.headingLine1")}
             </h2>
             <h2 className="font-display text-3xl md:text-4xl font-black text-brand-red leading-tight">
-              Milestones.
+              {t("milestones.headingLine2")}
             </h2>
           </MotionDiv>
 
@@ -555,39 +555,45 @@ const AboutPage: React.FC = () => {
             <div className="space-y-12">
               {[
                 {
+                  key: "founded",
                   year: "1994",
-                  title: "Founded in Mumbai",
-                  desc: "Atlantic Polymers Pvt. Ltd. established in Mumbai as one of India's earliest polymer indenting houses, laying the foundation for three decades of excellence.",
+                  titleKey: "milestones.founded.title",
+                  descKey: "milestones.founded.desc",
                   color: "red" as const,
                 },
                 {
+                  key: "silvassa",
                   year: "2000",
-                  title: "Silvassa Manufacturing",
-                  desc: "Commissioned our state-of-the-art manufacturing facility in Silvassa — marking the shift from indenting to full-scale domestic production.",
+                  titleKey: "milestones.silvassa.title",
+                  descKey: "milestones.silvassa.desc",
                   color: "blue" as const,
                 },
                 {
+                  key: "limca",
                   year: "2008",
-                  title: "Limca Book of Records",
-                  desc: "Fixoboard entered the Limca Book of Indian Records for achievement in product innovation — a nationally recognised milestone in our industry.",
+                  titleKey: "milestones.limca.title",
+                  descKey: "milestones.limca.desc",
                   color: "red" as const,
                 },
                 {
+                  key: "dubai",
                   year: "2012",
-                  title: "Dubai Branch Opened",
-                  desc: "Established an international presence with our Dubai branch, enabling global sourcing capabilities and access to international markets.",
+                  titleKey: "milestones.dubai.title",
+                  descKey: "milestones.dubai.desc",
                   color: "blue" as const,
                 },
                 {
+                  key: "sgs",
                   year: "2018",
-                  title: "SGS Certification",
-                  desc: "Achieved SGS international quality certification — validating our manufacturing processes against the world's most rigorous industrial standards.",
+                  titleKey: "milestones.sgs.title",
+                  descKey: "milestones.sgs.desc",
                   color: "red" as const,
                 },
                 {
+                  key: "wpc",
                   year: "2024",
-                  title: "WPC Product Range Launch",
-                  desc: "Expanded into the WPC segment with doors, door frames, and boards — completing Fixoboard's vision of a full building materials ecosystem.",
+                  titleKey: "milestones.wpc.title",
+                  descKey: "milestones.wpc.desc",
                   color: "blue" as const,
                 },
               ].map((item, idx) => (
@@ -631,10 +637,10 @@ const AboutPage: React.FC = () => {
                         {item.year}
                       </span>
                       <h4 className="font-display font-black text-slate-900 text-lg mb-2">
-                        {item.title}
+                        {t(item.titleKey)}
                       </h4>
                       <p className="text-slate-500 text-sm leading-relaxed">
-                        {item.desc}
+                        {t(item.descKey)}
                       </p>
                     </div>
                   </div>
@@ -665,16 +671,16 @@ const AboutPage: React.FC = () => {
               <div className="flex items-center gap-2 mb-6">
                 <div className="w-6 h-0.5 bg-green-600" />
                 <span className="text-green-600 text-xs font-semibold uppercase tracking-[0.25em]">
-                  Green Revolution
+                  {t("green.label")}
                 </span>
               </div>
 
               {/* Two-line heading */}
               <h2 className="font-display text-3xl md:text-4xl font-black text-slate-900 leading-tight mb-2">
-                Preservation
+                {t("green.headingLine1")}
               </h2>
               <h2 className="font-display text-3xl md:text-4xl font-black text-green-600 leading-tight mb-10">
-                Through Engineering.
+                {t("green.headingLine2")}
               </h2>
 
               {/* Two point blocks */}
@@ -685,12 +691,10 @@ const AboutPage: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-display font-black text-slate-900 text-base mb-2">
-                      The Deforestation Crisis
+                      {t("green.crisisTitle")}
                     </h4>
                     <p className="text-slate-600 text-sm leading-relaxed">
-                      Illegal logging contributes to 14% of global ecological
-                      damage. Traditional plywood depends on harvesting these
-                      vital resources.
+                      {t("green.crisisDesc")}
                     </p>
                   </div>
                 </div>
@@ -701,12 +705,10 @@ const AboutPage: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-display font-black text-slate-900 text-base mb-2">
-                      The Fixoboard Alternative
+                      {t("green.alternativeTitle")}
                     </h4>
                     <p className="text-slate-600 text-sm leading-relaxed">
-                      Every board produced is 100% recyclable, zero-emission,
-                      and does not harm a single tree. It is the definitive
-                      sustainable choice.
+                      {t("green.alternativeDesc")}
                     </p>
                   </div>
                 </div>
@@ -715,16 +717,20 @@ const AboutPage: React.FC = () => {
               {/* CTA */}
               <div className="mt-12">
                 <p className="font-display font-black text-2xl text-slate-900 mb-6">
-                  Go Green with{" "}
-                  <span className="text-green-600 underline decoration-green-300 underline-offset-4">
-                    Fixoboard.
-                  </span>
+                  <Trans
+                    i18nKey="green.ctaText"
+                    components={{
+                      brand: (
+                        <span className="text-green-600 underline decoration-green-300 underline-offset-4" />
+                      ),
+                    }}
+                  />
                 </p>
                 <Link
                   to="/contact"
                   className="inline-flex items-center gap-2 bg-brand-dark hover:bg-green-600 text-white px-6 py-3 rounded-xl text-sm font-bold uppercase tracking-wider transition-all duration-200 shadow-lg"
                 >
-                  Join the Movement <ArrowRight size={15} />
+                  {t("green.ctaButton")} <ArrowRight size={15} />
                 </Link>
               </div>
             </MotionDiv>
@@ -749,11 +755,10 @@ const AboutPage: React.FC = () => {
               <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl border border-green-100 p-6 hidden md:block max-w-xs">
                 <div className="flex items-center gap-2 text-green-600 font-semibold text-xs uppercase tracking-widest mb-3">
                   <CheckCircle2 size={14} />
-                  100% Sustainable
+                  {t("green.badgeLabel")}
                 </div>
                 <p className="text-slate-500 text-xs leading-relaxed">
-                  Zero emission production facility powered by ethical energy
-                  standards at Silvassa.
+                  {t("green.badgeDesc")}
                 </p>
               </div>
             </MotionDiv>
@@ -784,14 +789,14 @@ const AboutPage: React.FC = () => {
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-6 h-0.5 bg-brand-red" />
                   <span className="text-brand-red text-xs font-semibold uppercase tracking-[0.25em]">
-                    Work With Us
+                    {t("ctaBand.label")}
                   </span>
                 </div>
                 <h2 className="font-display text-3xl md:text-4xl font-black text-white leading-tight mb-2">
-                  Ready to Build
+                  {t("ctaBand.headingLine1")}
                 </h2>
                 <h2 className="font-display text-3xl md:text-4xl font-black text-brand-red leading-tight">
-                  Something Lasting?
+                  {t("ctaBand.headingLine2")}
                 </h2>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 shrink-0">
@@ -799,13 +804,13 @@ const AboutPage: React.FC = () => {
                   to="/contact"
                   className="inline-flex items-center gap-2 bg-brand-red hover:bg-brand-red-dark text-white px-6 py-3 rounded-xl text-sm font-bold uppercase tracking-wider transition-all hover:scale-[1.02] shadow-lg shadow-brand-red/20"
                 >
-                  Get a Quote <ArrowRight size={15} />
+                  {t("ctaBand.quoteButton")} <ArrowRight size={15} />
                 </Link>
                 <Link
                   to="/products"
                   className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 px-6 py-3 rounded-xl text-sm font-bold uppercase tracking-wider transition-all duration-200"
                 >
-                  View Products <ArrowRight size={15} />
+                  {t("ctaBand.productsButton")} <ArrowRight size={15} />
                 </Link>
               </div>
             </div>
@@ -821,26 +826,43 @@ const AboutPage: React.FC = () => {
             <div className="flex items-center gap-2 mb-8">
               <div className="w-6 h-0.5 bg-brand-blue" />
               <span className="text-brand-blue text-xs font-semibold uppercase tracking-[0.25em]">
-                Quick Navigation
+                {t("ctaBand.navLabel")}
               </span>
             </div>
             <h3 className="font-display text-2xl font-black text-slate-900 mb-8">
-              Explore the Range.
+              {t("ctaBand.navHeading")}
             </h3>
 
             <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
               {[
-                { name: "PVC / WPC Ply", path: "/products/pvc-wpc-ply" },
-                { name: "WPC Door", path: "/products/wpc-doors" },
-                { name: "Prelaminate Ply", path: "/products/prelaminate-ply" },
-                { name: "WPC Door Frames", path: "/products/wpc-door-frames" },
                 {
-                  name: "PVC Marble Sheets",
+                  key: "pvcWpcPly",
+                  labelKey: "ctaBand.linkPvcWpcPly",
+                  path: "/products/pvc-wpc-ply",
+                },
+                {
+                  key: "wpcDoor",
+                  labelKey: "ctaBand.linkWpcDoor",
+                  path: "/products/wpc-doors",
+                },
+                {
+                  key: "prelaminatePly",
+                  labelKey: "ctaBand.linkPrelaminatePly",
+                  path: "/products/prelaminate-ply",
+                },
+                {
+                  key: "wpcDoorFrames",
+                  labelKey: "ctaBand.linkWpcDoorFrames",
+                  path: "/products/wpc-door-frames",
+                },
+                {
+                  key: "pvcMarbleSheets",
+                  labelKey: "ctaBand.linkPvcMarbleSheets",
                   path: "/products/pvc-marble-sheets",
                 },
               ].map((link, idx) => (
                 <MotionDiv
-                  key={idx}
+                  key={link.key}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -857,7 +879,7 @@ const AboutPage: React.FC = () => {
                       />
                     </div>
                     <span className="font-display font-black text-xs text-slate-500 group-hover:text-slate-900 transition-colors leading-snug">
-                      {link.name}
+                      {t(link.labelKey)}
                     </span>
                   </Link>
                 </MotionDiv>
@@ -881,11 +903,11 @@ const AboutPage: React.FC = () => {
             <div className="flex items-center gap-2 mb-4">
               <div className="w-6 h-0.5 bg-brand-blue" />
               <span className="text-brand-blue text-xs font-semibold uppercase tracking-[0.25em]">
-                Get In Touch
+                {t("contactInfo.label")}
               </span>
             </div>
             <h2 className="font-display text-2xl font-black text-slate-900">
-              Find Us Here.
+              {t("contactInfo.heading")}
             </h2>
           </MotionDiv>
 
@@ -893,8 +915,9 @@ const AboutPage: React.FC = () => {
           <div className="grid lg:grid-cols-3 gap-8">
             {[
               {
+                key: "address",
                 icon: <MapPin size={22} />,
-                label: "Address",
+                labelKey: "contactInfo.addressLabel",
                 content: (
                   <p className="text-slate-500 text-sm leading-relaxed">
                     Sejal Encasa, Office No. 4A, 4th Floor,
@@ -906,8 +929,9 @@ const AboutPage: React.FC = () => {
                 ),
               },
               {
+                key: "phone",
                 icon: <Phone size={22} />,
-                label: "Phone",
+                labelKey: "contactInfo.phoneLabel",
                 content: (
                   <div className="space-y-1">
                     <a
@@ -927,8 +951,9 @@ const AboutPage: React.FC = () => {
                 ),
               },
               {
+                key: "email",
                 icon: <Mail size={22} />,
-                label: "Email",
+                labelKey: "contactInfo.emailLabel",
                 content: (
                   <a
                     href="mailto:info@fixoboard.com"
@@ -940,7 +965,7 @@ const AboutPage: React.FC = () => {
               },
             ].map((item, idx) => (
               <MotionDiv
-                key={idx}
+                key={item.key}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -952,7 +977,7 @@ const AboutPage: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-display font-black text-slate-900 text-sm mb-2">
-                    {item.label}
+                    {t(item.labelKey)}
                   </h4>
                   {item.content}
                 </div>

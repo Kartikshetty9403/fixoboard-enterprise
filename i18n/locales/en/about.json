@@ -62,5 +62,68 @@
     "pill1": "Lead Plywood Market",
     "pill2": "Complete Furniture Solution",
     "pill3": "Largest WPC Producer"
+  },
+  "milestones": {
+    "label": "Our Journey",
+    "headingLine1": "Three Decades of",
+    "headingLine2": "Milestones.",
+    "founded": {
+      "title": "Founded in Mumbai",
+      "desc": "Atlantic Polymers Pvt. Ltd. established in Mumbai as one of India's earliest polymer indenting houses, laying the foundation for three decades of excellence."
+    },
+    "silvassa": {
+      "title": "Silvassa Manufacturing",
+      "desc": "Commissioned our state-of-the-art manufacturing facility in Silvassa — marking the shift from indenting to full-scale domestic production."
+    },
+    "limca": {
+      "title": "Limca Book of Records",
+      "desc": "Fixoboard entered the Limca Book of Indian Records for achievement in product innovation — a nationally recognised milestone in our industry."
+    },
+    "dubai": {
+      "title": "Dubai Branch Opened",
+      "desc": "Established an international presence with our Dubai branch, enabling global sourcing capabilities and access to international markets."
+    },
+    "sgs": {
+      "title": "SGS Certification",
+      "desc": "Achieved SGS international quality certification — validating our manufacturing processes against the world's most rigorous industrial standards."
+    },
+    "wpc": {
+      "title": "WPC Product Range Launch",
+      "desc": "Expanded into the WPC segment with doors, door frames, and boards — completing Fixoboard's vision of a full building materials ecosystem."
+    }
+  },
+  "green": {
+    "label": "Green Revolution",
+    "headingLine1": "Preservation",
+    "headingLine2": "Through Engineering.",
+    "crisisTitle": "The Deforestation Crisis",
+    "crisisDesc": "Illegal logging contributes to 14% of global ecological damage. Traditional plywood depends on harvesting these vital resources.",
+    "alternativeTitle": "The Fixoboard Alternative",
+    "alternativeDesc": "Every board produced is 100% recyclable, zero-emission, and does not harm a single tree. It is the definitive sustainable choice.",
+    "ctaText": "Go Green with <brand>Fixoboard.</brand>",
+    "ctaButton": "Join the Movement",
+    "badgeLabel": "100% Sustainable",
+    "badgeDesc": "Zero emission production facility powered by ethical energy standards at Silvassa."
+  },
+   "ctaBand": {
+    "label": "Work With Us",
+    "headingLine1": "Ready to Build",
+    "headingLine2": "Something Lasting?",
+    "quoteButton": "Get a Quote",
+    "productsButton": "View Products",
+    "navLabel": "Quick Navigation",
+    "navHeading": "Explore the Range.",
+    "linkPvcWpcPly": "PVC / WPC Ply",
+    "linkWpcDoor": "WPC Door",
+    "linkPrelaminatePly": "Prelaminate Ply",
+    "linkWpcDoorFrames": "WPC Door Frames",
+    "linkPvcMarbleSheets": "PVC Marble Sheets"
+  },
+  "contactInfo": {
+    "label": "Get In Touch",
+    "heading": "Find Us Here.",
+    "addressLabel": "Address",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email"
   }
 }

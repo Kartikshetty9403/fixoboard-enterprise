@@ -62,5 +62,68 @@
     "pill1": "Líder en el Mercado de Contrachapado",
     "pill2": "Solución Integral para Muebles",
     "pill3": "Mayor Productor de WPC"
+  },
+  "milestones": {
+    "label": "Nuestro Recorrido",
+    "headingLine1": "Tres Décadas de",
+    "headingLine2": "Hitos.",
+    "founded": {
+      "title": "Fundada en Mumbai",
+      "desc": "Atlantic Polymers Pvt. Ltd. se estableció en Mumbai como una de las primeras casas de representación de polímeros de la India, sentando las bases de tres décadas de excelencia."
+    },
+    "silvassa": {
+      "title": "Fabricación en Silvassa",
+      "desc": "Puesta en marcha de nuestra planta de fabricación de última generación en Silvassa, marcando el paso de la representación a la producción nacional a gran escala."
+    },
+    "limca": {
+      "title": "Libro Limca de Récords",
+      "desc": "Fixoboard ingresó al Libro Limca de Récords de la India por sus logros en innovación de productos, un hito reconocido a nivel nacional en nuestra industria."
+    },
+    "dubai": {
+      "title": "Apertura de la Sucursal en Dubái",
+      "desc": "Establecimos presencia internacional con nuestra sucursal en Dubái, habilitando capacidades de abastecimiento global y acceso a mercados internacionales."
+    },
+    "sgs": {
+      "title": "Certificación SGS",
+      "desc": "Obtuvimos la certificación internacional de calidad SGS, validando nuestros procesos de fabricación frente a los estándares industriales más rigurosos del mundo."
+    },
+    "wpc": {
+      "title": "Lanzamiento de la Línea de Productos WPC",
+      "desc": "Expansión al segmento WPC con puertas, marcos de puertas y tableros, completando la visión de Fixoboard de un ecosistema integral de materiales de construcción."
+    }
+  },
+  "green": {
+    "label": "Revolución Verde",
+    "headingLine1": "Preservación",
+    "headingLine2": "A Través de la Ingeniería.",
+    "crisisTitle": "La Crisis de la Deforestación",
+    "crisisDesc": "La tala ilegal contribuye al 14% del daño ecológico mundial. La madera contrachapada tradicional depende de la explotación de estos recursos vitales.",
+    "alternativeTitle": "La Alternativa Fixoboard",
+    "alternativeDesc": "Cada tablero producido es 100% reciclable, de cero emisiones y no daña un solo árbol. Es la opción sostenible definitiva.",
+    "ctaText": "Únete a lo Verde con <brand>Fixoboard.</brand>",
+    "ctaButton": "Únete al Movimiento",
+    "badgeLabel": "100% Sostenible",
+    "badgeDesc": "Planta de producción de cero emisiones, alimentada con estándares energéticos éticos en Silvassa."
+  },
+  "ctaBand": {
+    "label": "Trabaja Con Nosotros",
+    "headingLine1": "¿Listo para Construir",
+    "headingLine2": "Algo Duradero?",
+    "quoteButton": "Solicitar Cotización",
+    "productsButton": "Ver Productos",
+    "navLabel": "Navegación Rápida",
+    "navHeading": "Explora la Gama.",
+    "linkPvcWpcPly": "Contrachapado PVC / WPC",
+    "linkWpcDoor": "Puerta WPC",
+    "linkPrelaminatePly": "Contrachapado Prelaminado",
+    "linkWpcDoorFrames": "Marcos de Puerta WPC",
+    "linkPvcMarbleSheets": "Láminas de Mármol PVC"
+  },
+  "contactInfo": {
+    "label": "Ponte en Contacto",
+    "heading": "Encuéntranos Aquí.",
+    "addressLabel": "Dirección",
+    "phoneLabel": "Teléfono",
+    "emailLabel": "Correo Electrónico"
   }
 }
