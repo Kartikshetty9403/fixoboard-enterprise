@@ -6,5 +6,79 @@
     "description": "Explore our comprehensive range of high-performance PVC and WPC materials engineered for structural integrity and environmental sustainability.",
     "searchPlaceholder": "Search products or specs...",
     "filter": "Filter"
+ },
+  "features": {
+    "label": "Technical Data Hub",
+    "headingLine1": "Why Choose",
+   "headingLine2": "Fixoboard?",
+   "description": "Industrial performance metrics that explain why Fixoboard is the definitive substitute for traditional plywood and MDF.",
+    "groups": {
+      "coreResilience": {
+        "title": "Core Resilience",
+        "termiteProof": {
+          "title": "Termite Proof",
+          "desc": "Naturally resistant to biological decay and all types of pests without toxic chemical treatments."
+        },
+        "waterProof": {
+          "title": "Water Proof",
+          "desc": "Guarantees zero symptoms of delamination, swelling, or water damage even if submerged."
+        },
+        "fireResistant": {
+          "title": "Fire Resistant",
+          "desc": "Self-extinguishing properties that ensure structural safety in high-risk zones like kitchens."
+        }
+      },
+      "healthSafety": {
+        "title": "Health & Safety",
+        "leadFree": {
+          "title": "100% Lead Free",
+          "desc": "Zero lead content prevents damage to kidneys, liver, and nervous system. Essential for healthcare."
+        },
+        "nonToxic": {
+          "title": "Non-Toxic / Zero Emission",
+          "desc": "VOC-free boards that maintain indoor air quality. 100% recyclable and eco-friendly."
+        },
+        "antiBacterial": {
+          "title": "Anti-Bacterial",
+          "desc": "Anti-fungal and hygienic surface that is easy to sanitize, perfect for kitchens and hospitals."
+        }
+      },
+      "industrialPerformance": {
+        "title": "Industrial Performance",
+        "uvChemical": {
+          "title": "UV & Chemical Resistant",
+          "desc": "Resistant to mild acids, alkalis, and sunlight. Ideal for both interior and exterior use."
+        },
+        "noShrinkage": {
+         "title": "No Shrinkage or Swelling",
+          "desc": "High dimensional stability ensures boards do not warp or expand under varying weather conditions."
+        },
+        "carpenterFriendly": {
+         "title": "Carpenter Friendly",
+          "desc": "Engineered for superior screw-holding. Compatible with standard woodworking tools."
+        }
+      }
+    },
+    "comparison": {
+      "label": "Technical Analysis",
+      "headingLine1": "Performance",
+      "headingLine2": "Comparison.",
+    "table": {
+      "feature": "Feature",
+      "plywood": "Plywood",
+      "mdf": "MDF",
+      "particleBoard": "Particle Board",
+      "fixoboard": "FixoBoard"
+    },
+     "rows": {
+      "termiteProof": "Termite Proof",
+      "waterProof": "100% Water Proof",
+      "leadFree": "Lead Free / Non-Toxic",
+      "fireRetardant": "Fire Retardant",
+      "antiFungal": "Anti-Fungal / Bacterial",
+      "hardness": "Shore D Hardness (50-80)",
+      "recyclable": "100% Recyclable"
+     }
   }
+}
 }

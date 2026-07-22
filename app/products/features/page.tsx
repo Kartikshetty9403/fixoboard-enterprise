@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import {
   ShieldCheck,
   Droplets,
@@ -16,64 +17,79 @@ import ProductComparisonTable from "../../../components/product/ProductCompariso
 const MotionDiv = motion.div as any;
 
 const ProductFeaturesPage: React.FC = () => {
+  const { t } = useTranslation("products");
   const featureGroups = [
     {
-      title: "Core Resilience",
+      key: "coreResilience",
+      titleKey: "features.groups.coreResilience.title",
       features: [
         {
+          key: "termiteProof",
           icon: <ShieldCheck />,
-          title: "Termite Proof",
-          desc: "Naturally resistant to biological decay and all types of pests without toxic chemical treatments.",
+          titleKey: "features.groups.coreResilience.termiteProof.title",
+          descKey: "features.groups.coreResilience.termiteProof.desc",
         },
         {
+          key: "waterProof",
           icon: <Droplets />,
-          title: "Water Proof",
-          desc: "Guarantees zero symptoms of delamination, swelling, or water damage even if submerged.",
+          titleKey: "features.groups.coreResilience.waterProof.title",
+          descKey: "features.groups.coreResilience.waterProof.desc",
         },
         {
+          key: "fireResistant",
           icon: <Flame />,
-          title: "Fire Resistant",
-          desc: "Self-extinguishing properties that ensure structural safety in high-risk zones like kitchens.",
+          titleKey: "features.groups.coreResilience.fireResistant.title",
+          descKey: "features.groups.coreResilience.fireResistant.desc",
         },
       ],
     },
     {
-      title: "Health & Safety",
+      key: "healthSafety",
+      titleKey: "features.groups.healthSafety.title",
       features: [
         {
+          key: "leadFree",
           icon: <HeartPulse />,
-          title: "100% Lead Free",
-          desc: "Zero lead content prevents damage to kidneys, liver, and nervous system. Essential for healthcare.",
+          titleKey: "features.groups.healthSafety.leadFree.title",
+          descKey: "features.groups.healthSafety.leadFree.desc",
         },
         {
+          key: "nonToxic",
           icon: <Leaf />,
-          title: "Non-Toxic / Zero Emission",
-          desc: "VOC-free boards that maintain indoor air quality. 100% recyclable and eco-friendly.",
+          titleKey: "features.groups.healthSafety.nonToxic.title",
+          descKey: "features.groups.healthSafety.nonToxic.desc",
         },
         {
+          key: "antiBacterial",
           icon: <Microscope />,
-          title: "Anti-Bacterial",
-          desc: "Anti-fungal and hygienic surface that is easy to sanitize, perfect for kitchens and hospitals.",
+          titleKey: "features.groups.healthSafety.antiBacterial.title",
+          descKey: "features.groups.healthSafety.antiBacterial.desc",
         },
       ],
     },
     {
-      title: "Industrial Performance",
+      key: "industrialPerformance",
+      titleKey: "features.groups.industrialPerformance.title",
       features: [
         {
+          key: "uvChemical",
           icon: <Sun />,
-          title: "UV & Chemical Resistant",
-          desc: "Resistant to mild acids, alkalis, and sunlight. Ideal for both interior and exterior use.",
+          titleKey: "features.groups.industrialPerformance.uvChemical.title",
+          descKey: "features.groups.industrialPerformance.uvChemical.desc",
         },
         {
+          key: "noShrinkage",
           icon: <Zap />,
-          title: "No Shrinkage or Swelling",
-          desc: "High dimensional stability ensures boards do not warp or expand under varying weather conditions.",
+          titleKey: "features.groups.industrialPerformance.noShrinkage.title",
+          descKey: "features.groups.industrialPerformance.noShrinkage.desc",
         },
         {
+          key: "carpenterFriendly",
           icon: <Hammer />,
-          title: "Carpenter Friendly",
-          desc: "Engineered for superior screw-holding. Compatible with standard woodworking tools.",
+          titleKey:
+            "features.groups.industrialPerformance.carpenterFriendly.title",
+          descKey:
+            "features.groups.industrialPerformance.carpenterFriendly.desc",
         },
       ],
     },
@@ -93,20 +109,19 @@ const ProductFeaturesPage: React.FC = () => {
             <div className="flex items-center gap-2 mb-6">
               <div className="w-6 h-0.5 bg-brand-red" />
               <span className="text-brand-red text-xs font-semibold uppercase tracking-[0.25em]">
-                Technical Data Hub
+                {t("features.label")}
               </span>
             </div>
 
             <h1 className="font-display text-4xl md:text-5xl font-black text-white leading-tight mb-2">
-              Why Choose
+              {t("features.headingLine1")}
             </h1>
             <h1 className="font-display text-4xl md:text-5xl font-black text-brand-red leading-tight mb-6">
-              Fixoboard?
+              {t("features.headingLine2")}
             </h1>
 
             <p className="text-slate-400 text-lg max-w-2xl leading-relaxed">
-              Industrial performance metrics that explain why Fixoboard is the
-              definitive substitute for traditional plywood and MDF.
+              {t("features.description")}
             </p>
           </MotionDiv>
         </div>
@@ -117,19 +132,19 @@ const ProductFeaturesPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-24">
             {featureGroups.map((group, gIdx) => (
-              <div key={gIdx}>
+              <div key={group.key}>
                 {/* Group heading — uses section label pattern */}
                 <div className="flex items-center gap-3 mb-12">
                   <div className="w-6 h-0.5 bg-brand-blue" />
                   <h2 className="font-display text-xl font-black text-slate-900 uppercase tracking-widest text-sm">
-                    {group.title}
+                    {t(group.titleKey)}
                   </h2>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-10">
                   {group.features.map((feature, fIdx) => (
                     <MotionDiv
-                      key={fIdx}
+                      key={feature.key}
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
@@ -145,10 +160,10 @@ const ProductFeaturesPage: React.FC = () => {
                       </div>
 
                       <h4 className="font-display text-lg font-black text-slate-900 mb-3">
-                        {feature.title}
+                        {t(feature.titleKey)}
                       </h4>
                       <p className="text-slate-500 leading-relaxed text-sm">
-                        {feature.desc}
+                        {t(feature.descKey)}
                       </p>
                     </MotionDiv>
                   ))}
@@ -165,16 +180,16 @@ const ProductFeaturesPage: React.FC = () => {
           <div className="flex items-center justify-center gap-2 mb-4">
             <div className="w-6 h-0.5 bg-brand-blue" />
             <span className="text-brand-blue text-xs font-semibold uppercase tracking-[0.25em]">
-              Technical Analysis
+              {t("features.comparison.label")}
             </span>
             <div className="w-6 h-0.5 bg-brand-blue" />
           </div>
 
           <h2 className="font-display text-3xl md:text-4xl font-black text-slate-900 leading-tight text-center mb-2">
-            Performance
+            {t("features.comparison.headingLine1")}
           </h2>
           <h2 className="font-display text-3xl md:text-4xl font-black text-brand-blue leading-tight text-center mb-16">
-            Comparison.
+            {t("features.comparison.headingLine2")}
           </h2>
 
           <ProductComparisonTable />

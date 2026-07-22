@@ -6,5 +6,52 @@
     "description": "Explore nuestra completa gama de materiales de PVC y WPC de alto rendimiento, diseñados para la integridad estructural y la sostenibilidad ambiental.",
     "searchPlaceholder": "Buscar productos o especificaciones...",
     "filter": "Filtrar"
+  },
+  "features": {
+  "label": "Centro de Datos Técnicos",
+  "headingLine1": "Por Qué Elegir",
+  "headingLine2": "¿Fixoboard?",
+  "description": "Métricas de rendimiento industrial que explican por qué Fixoboard es el sustituto definitivo de la madera contrachapada y el MDF tradicionales.",
+  "groups": {
+    "coreResilience": {
+      "title": "Resistencia Fundamental",
+      "termiteProof": { "title": "A Prueba de Termitas", "desc": "Naturalmente resistente a la descomposición biológica y a todo tipo de plagas, sin tratamientos químicos tóxicos." },
+      "waterProof": { "title": "Impermeable", "desc": "Garantiza cero síntomas de delaminación, hinchazón o daños por agua, incluso si se sumerge." },
+      "fireResistant": { "title": "Resistente al Fuego", "desc": "Propiedades autoextinguibles que garantizan la seguridad estructural en zonas de alto riesgo como cocinas." }
+    },
+    "healthSafety": {
+      "title": "Salud y Seguridad",
+      "leadFree": { "title": "100% Libre de Plomo", "desc": "El contenido cero de plomo previene daños a los riñones, el hígado y el sistema nervioso. Esencial para el sector salud." },
+      "nonToxic": { "title": "No Tóxico / Cero Emisiones", "desc": "Tableros libres de COV que mantienen la calidad del aire interior. 100% reciclables y ecológicos." },
+      "antiBacterial": { "title": "Antibacteriano", "desc": "Superficie antifúngica e higiénica, fácil de desinfectar, ideal para cocinas y hospitales." }
+    },
+    "industrialPerformance": {
+      "title": "Rendimiento Industrial",
+      "uvChemical": { "title": "Resistente a UV y Químicos", "desc": "Resistente a ácidos suaves, álcalis y luz solar. Ideal para uso interior y exterior." },
+      "noShrinkage": { "title": "Sin Contracción ni Hinchazón", "desc": "La alta estabilidad dimensional garantiza que los tableros no se deformen ni se expandan bajo distintas condiciones climáticas." },
+      "carpenterFriendly": { "title": "Apto para Carpinteros", "desc": "Diseñado para un agarre de tornillo superior. Compatible con herramientas de carpintería estándar." }
+    }
+  },
+  "comparison": {
+    "label": "Análisis Técnico",
+    "headingLine1": "Comparación de",
+    "headingLine2": "Rendimiento.",
+    "table": {
+      "feature": "Característica",
+      "plywood": "Contrachapado",
+      "mdf": "MDF",
+      "particleBoard": "Tablero de Partículas",
+      "fixoboard": "FixoBoard"
+    },
+     "rows": {
+      "termiteProof": "A Prueba de Termitas",
+      "waterProof": "100% Impermeable",
+      "leadFree": "Libre de Plomo / No Tóxico",
+      "fireRetardant": "Retardante de Fuego",
+      "antiFungal": "Antifúngico / Antibacteriano",
+      "hardness": "Dureza Shore D (50-80)",
+      "recyclable": "100% Reciclable"
+     }
   }
+}
 }
