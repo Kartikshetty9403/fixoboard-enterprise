@@ -1,7 +1,7 @@
 export const materialComparison = [
   {
     key: "termiteProof",
-    featureKey: "comparison.rows.termiteProof",
+    featureKey: "features.comparison.rows.termiteProof",
     plywood: false,
     mdf: false,
     particleBoard: false,
@@ -9,7 +9,7 @@ export const materialComparison = [
   },
   {
     key: "waterProof",
-    featureKey: "comparison.rows.waterProof",
+    featureKey: "features.comparison.rows.waterProof",
     plywood: false,
     mdf: false,
     particleBoard: false,
@@ -17,7 +17,7 @@ export const materialComparison = [
   },
   {
     key: "leadFree",
-    featureKey: "comparison.rows.leadFree",
+    featureKey: "features.comparison.rows.leadFree",
     plywood: false,
     mdf: false,
     particleBoard: false,
@@ -25,7 +25,7 @@ export const materialComparison = [
   },
   {
     key: "fireRetardant",
-    featureKey: "comparison.rows.fireRetardant",
+    featureKey: "features.comparison.rows.fireRetardant",
     plywood: false,
     mdf: false,
     particleBoard: false,
@@ -33,7 +33,7 @@ export const materialComparison = [
   },
   {
     key: "antiFungal",
-    featureKey: "comparison.rows.antiFungal",
+    featureKey: "features.comparison.rows.antiFungal",
     plywood: false,
     mdf: false,
     particleBoard: false,
@@ -41,7 +41,7 @@ export const materialComparison = [
   },
   {
     key: "hardness",
-    featureKey: "comparison.rows.hardness",
+    featureKey: "features.comparison.rows.hardness",
     plywood: true,
     mdf: true,
     particleBoard: false,
@@ -49,7 +49,7 @@ export const materialComparison = [
   },
   {
     key: "recyclable",
-    featureKey: "comparison.rows.recyclable",
+    featureKey: "features.comparison.rows.recyclable",
     plywood: false,
     mdf: false,
     particleBoard: false,
