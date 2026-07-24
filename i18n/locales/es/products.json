@@ -213,5 +213,39 @@
     "cta": {
       "requestShades": "Solicitar Muestras"
     }
+  },
+  "wpcDoorFrames": {
+    "breadcrumbCurrent": "Marcos de Puertas WPC",
+    "sectionLabel": "Soluciones Estructurales",
+    "headingLine1": "Marcos de Puertas",
+    "headingLine2": "WPC.",
+    "description": "El reemplazo de alta resistencia para los marcos de puertas de madera tradicionales. A prueba de termitas, a prueba de humedad y diseñado para una alta estabilidad estructural.",
+    "tags": {
+      "highStability": "Alta Estabilidad",
+      "easyInstallation": "Fácil Instalación"
+    },
+    "benefits": {
+      "label": "Ventajas Clave",
+      "headingLine1": "Mejor Que la",
+      "headingLine2": "Madera Natural.",
+      "items": {
+        "noCracking": {
+          "title": "Sin Grietas ni Rajaduras",
+          "desc": "A diferencia de la madera natural, los perfiles WPC no se expanden ni contraen con el calor."
+        },
+        "paintable": {
+          "title": "Pintable y Laminable",
+          "desc": "La superficie lisa permite pintura directa o laminado con film para combinar con los interiores."
+        },
+        "zeroMaintenance": {
+          "title": "Cero Mantenimiento",
+          "desc": "No requiere pulido ni tratamientos contra plagas durante toda su vida útil."
+        },
+        "screwRetention": {
+          "title": "Alta Retención de Tornillos",
+          "desc": "El núcleo compuesto sólido garantiza que las bisagras permanezcan firmes y las puertas no se hundan."
+        }
+      }
+    }
   }
 }

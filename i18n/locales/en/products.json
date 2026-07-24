@@ -216,5 +216,39 @@
     "cta": {
       "requestShades": "Request Shades"
     }
+  },
+  "wpcDoorFrames": {
+    "breadcrumbCurrent": "WPC Door Frames",
+    "sectionLabel": "Structural Solutions",
+    "headingLine1": "WPC Door",
+    "headingLine2": "Frames.",
+    "description": "The high-strength replacement for traditional wooden door frames. Termite-proof, moisture-proof, and engineered for high structural stability.",
+    "tags": {
+      "highStability": "High Stability",
+      "easyInstallation": "Easy Installation"
+    },
+    "benefits": {
+      "label": "Key Advantages",
+      "headingLine1": "Better Than",
+      "headingLine2": "Natural Wood.",
+      "items": {
+        "noCracking": {
+          "title": "No Cracking or Splitting",
+          "desc": "Unlike natural wood, WPC profiles do not expand or contract with heat."
+        },
+        "paintable": {
+          "title": "Paintable & Laminatable",
+          "desc": "Smooth surface allows for direct painting or foil lamination to match interiors."
+        },
+        "zeroMaintenance": {
+          "title": "Zero Maintenance",
+          "desc": "Does not require polishing or pest treatments during its entire lifespan."
+        },
+        "screwRetention": {
+          "title": "High Screw Retention",
+          "desc": "Solid composite core ensures hinges remain firm and doors do not sag."
+        }
+      }
+    }
   }
 }

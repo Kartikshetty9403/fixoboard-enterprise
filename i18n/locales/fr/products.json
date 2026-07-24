@@ -213,5 +213,39 @@
     "cta": {
       "requestShades": "Demander des Échantillons"
     }
+  },
+  "wpcDoorFrames": {
+    "breadcrumbCurrent": "Cadres de Portes WPC",
+    "sectionLabel": "Solutions Structurelles",
+    "headingLine1": "Cadres de Portes",
+    "headingLine2": "WPC.",
+    "description": "Le remplacement haute résistance pour les cadres de portes en bois traditionnels. À l'épreuve des termites, résistant à l'humidité et conçu pour une haute stabilité structurelle.",
+    "tags": {
+      "highStability": "Haute Stabilité",
+      "easyInstallation": "Installation Facile"
+    },
+    "benefits": {
+      "label": "Avantages Clés",
+      "headingLine1": "Mieux que le",
+      "headingLine2": "Bois Naturel.",
+      "items": {
+        "noCracking": {
+          "title": "Aucune Fissure ni Fendillement",
+          "desc": "Contrairement au bois naturel, les profilés WPC ne se dilatent ni ne se contractent avec la chaleur."
+        },
+        "paintable": {
+          "title": "Peignable et Laminable",
+          "desc": "La surface lisse permet une peinture directe ou un laminage par film pour s'harmoniser avec l'intérieur."
+        },
+        "zeroMaintenance": {
+          "title": "Zéro Entretien",
+          "desc": "Ne nécessite ni polissage ni traitement antiparasitaire pendant toute sa durée de vie."
+        },
+        "screwRetention": {
+          "title": "Haute Rétention des Vis",
+          "desc": "Le noyau composite massif garantit que les charnières restent fermes et que les portes ne s'affaissent pas."
+        }
+      }
+    }
   }
 }

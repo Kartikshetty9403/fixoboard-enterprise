@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { products } from "../../../data/products";
 import {
   Construction,
@@ -12,7 +13,31 @@ import {
 
 const MotionDiv = motion.div as any;
 
+const benefitItems = [
+  {
+    key: "noCracking",
+    titleKey: "wpcDoorFrames.benefits.items.noCracking.title",
+    descKey: "wpcDoorFrames.benefits.items.noCracking.desc",
+  },
+  {
+    key: "paintable",
+    titleKey: "wpcDoorFrames.benefits.items.paintable.title",
+    descKey: "wpcDoorFrames.benefits.items.paintable.desc",
+  },
+  {
+    key: "zeroMaintenance",
+    titleKey: "wpcDoorFrames.benefits.items.zeroMaintenance.title",
+    descKey: "wpcDoorFrames.benefits.items.zeroMaintenance.desc",
+  },
+  {
+    key: "screwRetention",
+    titleKey: "wpcDoorFrames.benefits.items.screwRetention.title",
+    descKey: "wpcDoorFrames.benefits.items.screwRetention.desc",
+  },
+];
+
 const WPCDoorFramePage: React.FC = () => {
+  const { t } = useTranslation("products");
   const product = products.find((p) => p.slug === "wpc-door-frames")!;
 
   return (
@@ -29,48 +54,48 @@ const WPCDoorFramePage: React.FC = () => {
               {/* Breadcrumb */}
               <div className="flex items-center gap-2 text-slate-400 text-xs mb-6">
                 <Link to="/" className="hover:text-white transition-colors">
-                  Home
+                  {t("shared.breadcrumb.home")}
                 </Link>
                 <ChevronRight size={12} />
                 <Link
                   to="/products"
                   className="hover:text-white transition-colors"
                 >
-                  Products
+                  {t("shared.breadcrumb.products")}
                 </Link>
                 <ChevronRight size={12} />
-                <span className="text-white">WPC Door Frames</span>
+                <span className="text-white">
+                  {t("wpcDoorFrames.breadcrumbCurrent")}
+                </span>
               </div>
 
               {/* Section label */}
               <div className="flex items-center gap-2 mb-6">
                 <div className="w-6 h-0.5 bg-brand-red" />
                 <span className="text-brand-red text-xs font-semibold uppercase tracking-[0.25em]">
-                  Structural Solutions
+                  {t("wpcDoorFrames.sectionLabel")}
                 </span>
               </div>
 
               <h1 className="font-display text-4xl md:text-5xl font-black text-white leading-tight mb-2">
-                WPC Door
+                {t("wpcDoorFrames.headingLine1")}
               </h1>
               <h1 className="font-display text-4xl md:text-5xl font-black text-brand-red leading-tight mb-6">
-                Frames.
+                {t("wpcDoorFrames.headingLine2")}
               </h1>
 
               <p className="text-slate-400 text-lg leading-relaxed mb-10">
-                The high-strength replacement for traditional wooden door
-                frames. Termite-proof, moisture-proof, and engineered for high
-                structural stability.
+                {t("wpcDoorFrames.description")}
               </p>
 
               <div className="flex flex-wrap gap-6">
                 <div className="flex items-center gap-2 text-white text-xs font-semibold">
                   <ShieldCheck size={14} className="text-brand-red" />
-                  High Stability
+                  {t("wpcDoorFrames.tags.highStability")}
                 </div>
                 <div className="flex items-center gap-2 text-white text-xs font-semibold">
                   <Construction size={14} className="text-brand-red" />
-                  Easy Installation
+                  {t("wpcDoorFrames.tags.easyInstallation")}
                 </div>
               </div>
             </MotionDiv>
@@ -111,7 +136,7 @@ const WPCDoorFramePage: React.FC = () => {
                 <div className="flex items-center gap-2 mb-8">
                   <div className="w-6 h-0.5 bg-brand-red" />
                   <span className="text-brand-red text-xs font-semibold uppercase tracking-[0.25em]">
-                    Technical Data Sheet
+                    {t("shared.technicalData.label")}
                   </span>
                 </div>
 
@@ -122,7 +147,7 @@ const WPCDoorFramePage: React.FC = () => {
                       className="flex justify-between border-b border-white/10 pb-4"
                     >
                       <span className="text-slate-400 text-[10px] font-semibold uppercase tracking-widest">
-                        {key}
+                        {t(`shared.specLabels.${key}`)}
                       </span>
                       <span className="text-white font-semibold text-sm">
                         {val}
@@ -135,7 +160,7 @@ const WPCDoorFramePage: React.FC = () => {
                   to="/contact"
                   className="mt-8 inline-flex items-center justify-center gap-2 w-full bg-brand-red hover:bg-brand-red-dark text-white px-6 py-3 rounded-xl text-sm font-bold uppercase tracking-wider transition-all hover:scale-[1.02] shadow-lg shadow-brand-red/20"
                 >
-                  Request Pricing <ArrowRight size={15} />
+                  {t("shared.cta.requestPricing")} <ArrowRight size={15} />
                 </Link>
               </div>
             </MotionDiv>
@@ -145,38 +170,21 @@ const WPCDoorFramePage: React.FC = () => {
               <div className="flex items-center gap-2 mb-6">
                 <div className="w-6 h-0.5 bg-brand-blue" />
                 <span className="text-brand-blue text-xs font-semibold uppercase tracking-[0.25em]">
-                  Key Advantages
+                  {t("wpcDoorFrames.benefits.label")}
                 </span>
               </div>
 
               <h2 className="font-display text-3xl md:text-4xl font-black text-slate-900 leading-tight mb-2">
-                Better Than
+                {t("wpcDoorFrames.benefits.headingLine1")}
               </h2>
               <h2 className="font-display text-3xl md:text-4xl font-black text-brand-blue leading-tight mb-10">
-                Natural Wood.
+                {t("wpcDoorFrames.benefits.headingLine2")}
               </h2>
 
               <div className="space-y-6">
-                {[
-                  {
-                    title: "No Cracking or Splitting",
-                    desc: "Unlike natural wood, WPC profiles do not expand or contract with heat.",
-                  },
-                  {
-                    title: "Paintable & Laminatable",
-                    desc: "Smooth surface allows for direct painting or foil lamination to match interiors.",
-                  },
-                  {
-                    title: "Zero Maintenance",
-                    desc: "Does not require polishing or pest treatments during its entire lifespan.",
-                  },
-                  {
-                    title: "High Screw Retention",
-                    desc: "Solid composite core ensures hinges remain firm and doors do not sag.",
-                  },
-                ].map((item, idx) => (
+                {benefitItems.map((item, idx) => (
                   <MotionDiv
-                    key={idx}
+                    key={item.key}
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -189,10 +197,10 @@ const WPCDoorFramePage: React.FC = () => {
                     />
                     <div>
                       <h4 className="font-display font-black text-slate-900 mb-1 text-sm">
-                        {item.title}
+                        {t(item.titleKey)}
                       </h4>
                       <p className="text-slate-500 text-sm leading-relaxed">
-                        {item.desc}
+                        {t(item.descKey)}
                       </p>
                     </div>
                   </MotionDiv>
