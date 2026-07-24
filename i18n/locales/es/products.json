@@ -247,5 +247,43 @@
         }
       }
     }
+  },
+  "pvcMarbleSheets": {
+    "breadcrumbCurrent": "Láminas de Mármol PVC",
+    "sectionLabel": "Decorativo de Interiores",
+    "headingLine1": "Láminas de Mármol",
+    "headingLine2": "PVC.",
+    "description": "Paneles de pared premium de alto brillo con estética de mármol natural. Livianos, a prueba de humedad y diseñados para interiores modernos e higiénicos.",
+    "tags": {
+      "marbleAesthetics": "Estética de Mármol",
+      "hygienicFinish": "Acabado Higiénico"
+    },
+    "benefits": {
+      "label": "Beneficios Clave",
+      "headingLine1": "Diseñados para Interiores",
+      "headingLine2": "Modernos.",
+      "items": {
+        "lightweight": {
+          "title": "Material Liviano",
+          "desc": "Fácil de manejar e instalar incluso en paredes verticales sin refuerzo estructural pesado."
+        },
+        "hygienic": {
+          "title": "Higiénico y Antibacteriano",
+          "desc": "La superficie no porosa evita el crecimiento bacteriano. Ideal para hospitales y áreas húmedas."
+        },
+        "quickInstall": {
+          "title": "Instalación Rápida",
+          "desc": "Aplicación directa con adhesivo sobre superficies lisas. No requiere tiempo de curado."
+        },
+        "waterproof": {
+          "title": "Rendimiento Impermeable",
+          "desc": "Perfecto para zonas de alta humedad como baños y cocinas, donde el mármol natural puede mancharse."
+        }
+      }
+    },
+    "applications": {
+      "label": "Aplicaciones",
+      "text": "Vestíbulos, Baños, Paredes Comerciales, Ascensores, Salas de Exhibición."
+    }
   }
 }

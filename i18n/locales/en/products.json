@@ -250,5 +250,43 @@
         }
       }
     }
+  },
+  "pvcMarbleSheets": {
+    "breadcrumbCurrent": "PVC Marble Sheets",
+    "sectionLabel": "Interior Decorative",
+    "headingLine1": "PVC Marble",
+    "headingLine2": "Sheets.",
+    "description": "Premium high-gloss wall panels with natural marble aesthetics. Lightweight, moisture-proof, and designed for modern, hygienic interiors.",
+    "tags": {
+      "marbleAesthetics": "Marble Aesthetics",
+      "hygienicFinish": "Hygienic Finish"
+    },
+    "benefits": {
+      "label": "Key Benefits",
+      "headingLine1": "Built for Modern",
+      "headingLine2": "Interiors.",
+      "items": {
+        "lightweight": {
+          "title": "Lightweight Material",
+          "desc": "Easy to handle and install even on vertical walls without heavy structural reinforcement."
+        },
+        "hygienic": {
+          "title": "Hygienic & Anti-Bacterial",
+          "desc": "Non-porous surface prevents bacterial growth. Ideal for hospitals and wet areas."
+        },
+        "quickInstall": {
+          "title": "Quick Installation",
+          "desc": "Directly adhesive-based application on smooth surfaces. No curing time required."
+        },
+        "waterproof": {
+          "title": "Waterproof Performance",
+          "desc": "Perfect for high-moisture zones like bathrooms and kitchens where natural marble may stain."
+        }
+      }
+    },
+    "applications": {
+      "label": "Applications",
+      "text": "Lobbies, Bathrooms, Retail Walls, Elevators, Showrooms."
+    }
   }
 }

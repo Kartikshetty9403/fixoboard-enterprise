@@ -247,5 +247,43 @@
         }
       }
     }
+  },
+  "pvcMarbleSheets": {
+    "breadcrumbCurrent": "Panneaux Marbre PVC",
+    "sectionLabel": "Décoration Intérieure",
+    "headingLine1": "Panneaux Marbre",
+    "headingLine2": "PVC.",
+    "description": "Panneaux muraux haut de gamme brillants à l'esthétique marbre naturel. Légers, résistants à l'humidité et conçus pour des intérieurs modernes et hygiéniques.",
+    "tags": {
+      "marbleAesthetics": "Esthétique Marbre",
+      "hygienicFinish": "Finition Hygiénique"
+    },
+    "benefits": {
+      "label": "Avantages Clés",
+      "headingLine1": "Conçus pour l'Intérieur",
+      "headingLine2": "Moderne.",
+      "items": {
+        "lightweight": {
+          "title": "Matériau Léger",
+          "desc": "Facile à manipuler et à installer, même sur des murs verticaux, sans renforcement structurel lourd."
+        },
+        "hygienic": {
+          "title": "Hygiénique et Antibactérien",
+          "desc": "La surface non poreuse empêche la prolifération bactérienne. Idéal pour les hôpitaux et les zones humides."
+        },
+        "quickInstall": {
+          "title": "Installation Rapide",
+          "desc": "Application directe par collage sur surfaces lisses. Aucun temps de séchage requis."
+        },
+        "waterproof": {
+          "title": "Performance Imperméable",
+          "desc": "Parfait pour les zones très humides comme les salles de bains et cuisines, où le marbre naturel peut se tacher."
+        }
+      }
+    },
+    "applications": {
+      "label": "Applications",
+      "text": "Halls, Salles de Bains, Murs Commerciaux, Ascenseurs, Salles d'Exposition."
+    }
   }
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { products } from "../../../data/products";
 import {
   Palette,
@@ -12,7 +13,31 @@ import {
 
 const MotionDiv = motion.div as any;
 
+const benefitItems = [
+  {
+    key: "lightweight",
+    titleKey: "pvcMarbleSheets.benefits.items.lightweight.title",
+    descKey: "pvcMarbleSheets.benefits.items.lightweight.desc",
+  },
+  {
+    key: "hygienic",
+    titleKey: "pvcMarbleSheets.benefits.items.hygienic.title",
+    descKey: "pvcMarbleSheets.benefits.items.hygienic.desc",
+  },
+  {
+    key: "quickInstall",
+    titleKey: "pvcMarbleSheets.benefits.items.quickInstall.title",
+    descKey: "pvcMarbleSheets.benefits.items.quickInstall.desc",
+  },
+  {
+    key: "waterproof",
+    titleKey: "pvcMarbleSheets.benefits.items.waterproof.title",
+    descKey: "pvcMarbleSheets.benefits.items.waterproof.desc",
+  },
+];
+
 const PVCMarbleSheetPage: React.FC = () => {
+  const { t } = useTranslation("products");
   const product = products.find((p) => p.slug === "pvc-marble-sheets")!;
 
   return (
@@ -29,48 +54,48 @@ const PVCMarbleSheetPage: React.FC = () => {
               {/* Breadcrumb */}
               <div className="flex items-center gap-2 text-slate-400 text-xs mb-6">
                 <Link to="/" className="hover:text-white transition-colors">
-                  Home
+                  {t("shared.breadcrumb.home")}
                 </Link>
                 <ChevronRight size={12} />
                 <Link
                   to="/products"
                   className="hover:text-white transition-colors"
                 >
-                  Products
+                  {t("shared.breadcrumb.products")}
                 </Link>
                 <ChevronRight size={12} />
-                <span className="text-white">PVC Marble Sheets</span>
+                <span className="text-white">
+                  {t("pvcMarbleSheets.breadcrumbCurrent")}
+                </span>
               </div>
 
               {/* Section label */}
               <div className="flex items-center gap-2 mb-6">
                 <div className="w-6 h-0.5 bg-brand-red" />
                 <span className="text-brand-red text-xs font-semibold uppercase tracking-[0.25em]">
-                  Interior Decorative
+                  {t("pvcMarbleSheets.sectionLabel")}
                 </span>
               </div>
 
               <h1 className="font-display text-4xl md:text-5xl font-black text-white leading-tight mb-2">
-                PVC Marble
+                {t("pvcMarbleSheets.headingLine1")}
               </h1>
               <h1 className="font-display text-4xl md:text-5xl font-black text-brand-red leading-tight mb-6">
-                Sheets.
+                {t("pvcMarbleSheets.headingLine2")}
               </h1>
 
               <p className="text-slate-400 text-lg leading-relaxed mb-10">
-                Premium high-gloss wall panels with natural marble aesthetics.
-                Lightweight, moisture-proof, and designed for modern, hygienic
-                interiors.
+                {t("pvcMarbleSheets.description")}
               </p>
 
               <div className="flex flex-wrap gap-4">
                 <div className="flex items-center gap-2 text-white text-xs font-semibold">
                   <Palette size={14} className="text-brand-red" />
-                  Marble Aesthetics
+                  {t("pvcMarbleSheets.tags.marbleAesthetics")}
                 </div>
                 <div className="flex items-center gap-2 text-white text-xs font-semibold">
                   <HeartPulse size={14} className="text-brand-red" />
-                  Hygienic Finish
+                  {t("pvcMarbleSheets.tags.hygienicFinish")}
                 </div>
               </div>
             </MotionDiv>
@@ -104,38 +129,21 @@ const PVCMarbleSheetPage: React.FC = () => {
               <div className="flex items-center gap-2 mb-6">
                 <div className="w-6 h-0.5 bg-brand-blue" />
                 <span className="text-brand-blue text-xs font-semibold uppercase tracking-[0.25em]">
-                  Key Benefits
+                  {t("pvcMarbleSheets.benefits.label")}
                 </span>
               </div>
 
               <h2 className="font-display text-3xl font-black text-slate-900 leading-tight mb-2">
-                Built for Modern
+                {t("pvcMarbleSheets.benefits.headingLine1")}
               </h2>
               <h2 className="font-display text-3xl font-black text-brand-blue leading-tight mb-10">
-                Interiors.
+                {t("pvcMarbleSheets.benefits.headingLine2")}
               </h2>
 
               <div className="grid md:grid-cols-2 gap-6">
-                {[
-                  {
-                    title: "Lightweight Material",
-                    desc: "Easy to handle and install even on vertical walls without heavy structural reinforcement.",
-                  },
-                  {
-                    title: "Hygienic & Anti-Bacterial",
-                    desc: "Non-porous surface prevents bacterial growth. Ideal for hospitals and wet areas.",
-                  },
-                  {
-                    title: "Quick Installation",
-                    desc: "Directly adhesive-based application on smooth surfaces. No curing time required.",
-                  },
-                  {
-                    title: "Waterproof Performance",
-                    desc: "Perfect for high-moisture zones like bathrooms and kitchens where natural marble may stain.",
-                  },
-                ].map((item, idx) => (
+                {benefitItems.map((item, idx) => (
                   <MotionDiv
-                    key={idx}
+                    key={item.key}
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -148,10 +156,10 @@ const PVCMarbleSheetPage: React.FC = () => {
                     />
                     <div>
                       <h4 className="font-display font-black text-slate-900 mb-1 text-sm">
-                        {item.title}
+                        {t(item.titleKey)}
                       </h4>
                       <p className="text-slate-500 text-sm leading-relaxed">
-                        {item.desc}
+                        {t(item.descKey)}
                       </p>
                     </div>
                   </MotionDiv>
@@ -170,7 +178,7 @@ const PVCMarbleSheetPage: React.FC = () => {
               <div className="flex items-center gap-2 mb-8">
                 <div className="w-6 h-0.5 bg-brand-red" />
                 <span className="text-brand-red text-xs font-semibold uppercase tracking-[0.25em]">
-                  Technical Data
+                  {t("shared.technicalData.label")}
                 </span>
               </div>
 
@@ -178,7 +186,7 @@ const PVCMarbleSheetPage: React.FC = () => {
                 {Object.entries(product.specifications).map(([key, val]) => (
                   <div key={key} className="border-b border-white/10 pb-4">
                     <span className="text-slate-400 text-[10px] font-semibold uppercase tracking-widest block mb-1">
-                      {key}
+                      {t(`shared.specLabels.${key}`)}
                     </span>
                     <span className="text-white font-semibold text-sm">
                       {val}
@@ -190,10 +198,10 @@ const PVCMarbleSheetPage: React.FC = () => {
               {/* Applications pill */}
               <div className="mt-8 bg-brand-blue/10 border border-brand-blue/20 rounded-xl p-5">
                 <span className="text-brand-blue text-[10px] font-semibold uppercase tracking-widest block mb-2">
-                  Applications
+                  {t("pvcMarbleSheets.applications.label")}
                 </span>
                 <p className="text-slate-300 text-xs leading-relaxed">
-                  Lobbies, Bathrooms, Retail Walls, Elevators, Showrooms.
+                  {t("pvcMarbleSheets.applications.text")}
                 </p>
               </div>
 
@@ -201,7 +209,7 @@ const PVCMarbleSheetPage: React.FC = () => {
                 to="/contact"
                 className="mt-6 inline-flex items-center justify-center gap-2 bg-brand-red hover:bg-brand-red-dark text-white px-6 py-3 rounded-xl text-sm font-bold uppercase tracking-wider transition-all hover:scale-[1.02] shadow-lg shadow-brand-red/20"
               >
-                Get a Quote <ArrowRight size={15} />
+                {t("shared.cta.getQuote")} <ArrowRight size={15} />
               </Link>
             </MotionDiv>
           </div>
